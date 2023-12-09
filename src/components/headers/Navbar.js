@@ -1,5 +1,5 @@
 import React from 'react'
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, Tooltip} from "@nextui-org/react";
 import { FaPizzaSlice } from "react-icons/fa";
 
 
@@ -15,13 +15,8 @@ const Nav = () => {
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
             <NavbarItem>
-            <Link className='text-white' href="#">
-                Features
-            </Link>
-            </NavbarItem>
-            <NavbarItem>
             <Link href="#" className='text-white'>
-                About
+                About us
             </Link>
             </NavbarItem>
             <NavbarItem>
@@ -31,10 +26,12 @@ const Nav = () => {
             </NavbarItem>
         </NavbarContent>
         <NavbarContent justify="end">
-            <NavbarItem className="hidden lg:flex">
+            <NavbarItem className="lg:flex">
+            <Tooltip content="Order now!">
             <Button>
                 <Link className='text-black font-bold' href="#">ORDER <FaPizzaSlice className='ml-3 text-xl' /></Link>
             </Button>
+            </Tooltip>
             </NavbarItem>
         </NavbarContent>
         </Navbar>
