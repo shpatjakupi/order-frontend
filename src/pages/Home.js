@@ -8,7 +8,7 @@ const Home = () => {
     <div>
 
     <Herobanner 
-    title="Royal Plate"
+    title="Vanløse Pizza"
     />
 
     <Aboutsection
