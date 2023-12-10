@@ -3,12 +3,12 @@ import {Divider} from "@nextui-org/react";
 import {Accordion, AccordionItem} from "@nextui-org/react";
 import {AiOutlinePlus} from "react-icons/ai";
 
-export default function Footer() {
+export default function Footer(props) {
   return (
     <div className='border-t px-5 py-5 footer text-center lg:flex justify-center lg:justify-between text-sm'>  
 
         <div className='mb-2 lg:mb-0'>
-        <p>Copyright © 2023 VanløsePizza.dk. All rights reserved.</p>
+        <p>Copyright © 2023 {props.domain}.dk. All rights reserved.</p>
         </div>
 
         <div className=''>

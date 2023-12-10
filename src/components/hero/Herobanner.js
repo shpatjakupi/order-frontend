@@ -10,7 +10,7 @@ const Herobanner = (props) => {
   return (
     <>
 
-        <div className='h-[540px] lg:h-screen relative flex items-center justify-center'>
+        <div className='h-screen relative flex items-center justify-center'>
             <img className='h-full w-full' src={url} />
             <div className='absolute bg-[#0000008a] h-full w-full top-0'></div>
 

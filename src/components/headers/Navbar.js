@@ -13,18 +13,6 @@ const Nav = () => {
         <NavbarBrand>
             <p className="font-bold text-inherit text-white">LOGO</p>
         </NavbarBrand>
-        <NavbarContent className="hidden sm:flex gap-4" justify="center">
-            <NavbarItem>
-            <Link href="#" className='text-white'>
-                About us
-            </Link>
-            </NavbarItem>
-            <NavbarItem>
-            <Link className='text-white' href="#">
-                Contact
-            </Link>
-            </NavbarItem>
-        </NavbarContent>
         <NavbarContent justify="end">
             <NavbarItem className="lg:flex">
             <Tooltip content="Order now!">
