@@ -8,7 +8,7 @@ const Nav = () => {
     <>
         <Navbar 
         shouldHideOnScroll
-        className='fixed bg-transparent text-white'
+        className='fixed bg-inherit	backdrop-blur-none	 text-white'
         >
         <NavbarBrand>
             <p className="font-bold text-inherit text-white">LOGO</p>

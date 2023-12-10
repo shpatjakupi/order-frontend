@@ -6,13 +6,13 @@ export default function Secondfooter() {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   return (
-    <div className='fixed bottom-1 left-1/2 bg-opacity-80 backdrop-blur-md transform -translate-x-1/2 transform -translate-y-1/2 px-4 py-2 justify-center rounded-md w-[350px]'>
+    <div className='fixed bottom-0 left-1/2 bg-opacity-80 backdrop-blur-md transform -translate-x-1/2 transform -translate-y-1/2 px-4 py-2 justify-center rounded-full w-[350px]'>
 
         <ul className='flex justify-between rounded-md items-center'>
             <li className=' font-bold text-[#fcda9a]'>
                 <Button 
                 onPress={onOpen}
-                className='m-0 p-0 bg-transparent text-[#fcda9a] font-bold text-md'
+                className='bg-transparent text-[#fcda9a] font-bold text-md m-0 p-0 block'
                 >
                     About
                 </Button>
@@ -38,7 +38,7 @@ export default function Secondfooter() {
                     </ModalContent>
                 </Modal>
             </li>
-            <li className='font-bold text-[#fcda9a]'>Smiley Rapport</li>
+            <li className='font-bold text-[#fcda9a]'>Kontrol Rapport</li>
             <li className='font-bold text-[#fcda9a]'>Menu</li>
         </ul>
 
