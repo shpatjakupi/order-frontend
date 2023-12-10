@@ -14,7 +14,7 @@ export default function Secondfooter() {
                 onPress={onOpen}
                 className='m-0 p-0 bg-transparent text-[#fcda9a] font-bold text-md'
                 >
-                    About us
+                    About
                 </Button>
                 <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
                     <ModalContent>
@@ -39,7 +39,7 @@ export default function Secondfooter() {
                 </Modal>
             </li>
             <li className='font-bold text-[#fcda9a]'>Smiley Rapport</li>
-            <li className='font-bold text-[#fcda9a]'>Third Item</li>
+            <li className='font-bold text-[#fcda9a]'>Menu</li>
         </ul>
 
     </div>
