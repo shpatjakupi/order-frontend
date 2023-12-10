@@ -5,7 +5,7 @@ import {Tooltip, Button} from "@nextui-org/react";
 
 const url = 'https://images.unsplash.com/photo-1579751626657-72bc17010498?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
-const Herobanner = () => {
+const Herobanner = (props) => {
 
   return (
     <>
@@ -17,7 +17,7 @@ const Herobanner = () => {
             <div className='textCenter text-center text-white absolute mt-10'>
 
                 <p className='text-md lg:text-xl text-[#fcda9a]'>Discover</p>
-                <h1 className='text-6xl lg:text-8xl'>Royal Plate</h1>
+                <h1 className='text-6xl lg:text-8xl'>{props.title}</h1>
 
                 <div className='knife my-4 flex items-center justify-center'>
                     <GiKnifeFork className='text-6xl text-[#fcda9a]' />
