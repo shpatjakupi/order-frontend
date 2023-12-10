@@ -20,7 +20,7 @@ const Aboutsection = (props) => {
             <h2 className='text-2xl font-bold uppercase'>{props.title}</h2>
             <div className='flex items-center justify-center mt-2'>
             <p className="border-b  border-black w-10"></p>
-            <GoDotFill className='text-sm' />
+            <GoDotFill className='text-sm mx-1' />
             <p className="border-b  border-black w-10"></p>
             </div>
 
