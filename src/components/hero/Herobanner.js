@@ -34,13 +34,10 @@ const Herobanner = () => {
                         <p>Weekend: <span className=' text-teal-500'>11.00 - 23.00</span></p>
                     </div>
 
-                    <Tooltip content="Call restaurant">
-                    <FaSquarePhone className='absolute text-3xl top-2 right-3' />
-                    </Tooltip>
-
                 </div>
 
             </div>
+            {/* <FaSquarePhone className='absolute text-5xl lg:text-6xl bottom-3 right-3 text-[#fcda9a]' /> */}
         </div>
 
 
