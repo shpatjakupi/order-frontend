@@ -1,35 +1,31 @@
 import React from 'react'
-import { GiKnifeFork } from "react-icons/gi";
-import { FaSquarePhone } from "react-icons/fa6";
 import {Tooltip, Button} from "@nextui-org/react";
-import { FaClock } from "react-icons/fa";
+import { MdOutlineHandyman } from "react-icons/md";
+import { BiWindowOpen } from "react-icons/bi";
+import { IoIosBicycle } from "react-icons/io";
 
 const About = (props) => {
   return (
 
-    <div className='textCenter text-center my-20 text-black'>
+    <div className='textCenter text-white bg-[#030303] px-3 pt-20 py-4'>
 
-        <p className='text-md lg:text-xl text-[#fcda9a]'>Discover</p>
-        <h1 className='text-6xl lg:text-8xl'>{props.title}</h1>
-
-        <div className='knife my-4 flex items-center justify-center'>
-            <GiKnifeFork className='text-6xl text-[#fcda9a]' />
+        <div className='flex justify-between items-center mb-3'>
+            <p className='bg-black text-white rounded-full p-2'> 8.6 </p>
+            <p>Åbent indtil 22.00</p>
+            <p>Smiley info</p>
         </div>
 
-        <div className='openingHours bg-opacity-80  p-4 backdrop-blur-sm rounded-md w-fit m-auto relative'>
-            <p className='mb-2 text-lg font-semibold border-b pb-1'>OPENING HOURS</p>
-
-            <div className='flex items-center'>
-            <FaClock className='mr-1' />
-                <p>Monday - Friday: <span className=' text-teal-500'>14.00 - 22.00</span></p>
+        <div className='flex justify-between items-center'>
+            <Button size='md' endContent={<IoIosBicycle className='text-2xl'/>} className='bg-[#fcda9a] text-black rounded w-[75%]'>Levering 60-70 min.</Button>
+            <div className='flex'>
+            <MdOutlineHandyman className='bg-[#fcda9a] text-black text-4xl p-1 rounded mr-2' />
+            <BiWindowOpen className='bg-[#fcda9a] text-black text-4xl p-1 rounded' />
             </div>
-
-            <div className='flex items-center justify-center'>
-                <FaClock className='mr-1' />
-                <p>Weekend: <span className=' text-teal-500'>11.00 - 23.00</span></p>
-            </div>
-
         </div>
+
+        <div className='bg-[#fcda9a] text-center text-black py-4 px-2 w-full rounded mt-7'>Gratis levering</div>
+
+        <p className='text-center mt-3'>Se alle tilbud</p>
 
     </div>
   )

@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 export default function App() {
 
   return (
-    <>
+    <div>
       <Router>
         <Navbar />
         <Routes>
@@ -16,6 +16,6 @@ export default function App() {
         </Routes>
       </Router>
       <Footer domain="Vanløsepizza" />
-    </>
+    </div>
   );
 }
