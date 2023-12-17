@@ -9,7 +9,7 @@ const About = (props) => {
 
   return (
 
-    <div className='textCenter text-black bg-white mt-6 md:mt-0'>
+    <div className='textCenter text-black bg-white mt-10 md:mt-0'>
 
         <div className='md:flex text-center justify-center md:justify-normal gap-5 items-center border-b py-4 px-5'>
             <div className='flex items-center justify-center mb-1 md:mb-0'>
