@@ -11,7 +11,7 @@ const About = (props) => {
 
     <div className='textCenter text-black bg-white mt-10 md:mt-0'>
 
-        <div className='md:flex text-center justify-center md:justify-normal gap-5 items-center border-b py-4 px-5'>
+        <div className='md:flex text-center justify-center md:justify-normal gap-5 items-center py-4 px-5'>
             <div className='flex items-center justify-center mb-1 md:mb-0'>
                 <FcGoogle className='mr-1 text-md' />
                 <p className=''> 4.5 </p>
@@ -21,7 +21,7 @@ const About = (props) => {
                 <p> Åbent indtil 22.00</p>
             </div>
             <div className='flex items-center justify-center'>
-                <FaCircleInfo className='text-md mr-1 text-[#009ddf]' />
+                <FaCircleInfo className='text-md mr-1 text-blue-400' />
                 <Button className='bg-transparent w-fit p-0 m-0' onPress={onOpen}>Se mere information</Button>
             </div>
             <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
@@ -86,7 +86,7 @@ const About = (props) => {
                         </div>
                     </ModalBody>
                     <ModalFooter>
-                        <Button className='bg-gray-300 text-black' onPress={onClose}>
+                        <Button className='bg-gray-100 text-black' onPress={onClose}>
                         Close
                         </Button>
                     </ModalFooter>
