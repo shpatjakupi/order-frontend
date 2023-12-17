@@ -4,8 +4,9 @@ import { FaPizzaSlice } from "react-icons/fa";
 
 const Nav = () => {
   return (
-    <div className='w-full  z-50 fixed text-white px-6 py-3'>
-      <p className='text-xl font-bold text-white'>Logo</p>
+    <div className='w-full text-end z-50 fixed text-white px-3 py-3'>
+
+      <Button className='bg-blue-400 text-white font-bold text-lg'>Bestil</Button>
     </div>
   );
 }

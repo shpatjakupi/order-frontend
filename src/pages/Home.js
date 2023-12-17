@@ -10,7 +10,7 @@ const Home = () => {
 
       <Herobanner />
       <About />
-      <FaSquarePhone className='fixed text-5xl lg:text-6xl bottom-3 right-3 text-[#fcda9a] rounded-md lg:rounded-xl' />
+      <FaSquarePhone className='fixed text-4xl lg:bottom-12 bottom-24 right-3 text-blue-400 rounded-md' />
 
     </div>
 

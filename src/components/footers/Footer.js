@@ -5,17 +5,17 @@ import {AiOutlinePlus} from "react-icons/ai";
 
 export default function Footer(props) {
   return (
-    <div className='border-t footer text-center text-sm py-3'>  
+    <div className='border-t lg:flex justify-between items-center absolute bottom-0 footer text-center text-sm py-3 w-full px-5'>  
 
-        <p>Copyright © 2023 {props.domain}.dk. All rights reserved.</p>
+        <p className='text-center'>Copyright © 2023 {props.domain}.dk. All rights reserved.</p>
 
-        {/* <div className=''>
+        <div className=''>
         <ul className='flex justify-center'>
             <li className='mr-5'>Order</li>
             <li className='mr-5'>Call</li>
             <li>Cookie Preferences</li>
         </ul>
-        </div> */}
+        </div> 
         
     </div>  
 
