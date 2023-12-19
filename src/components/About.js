@@ -42,7 +42,7 @@ const About = (props) => {
                         </p>
 
                         <p className='font-bold text-lg'>Adresse:</p>
-                        <p>Rentemestervej 94 <br />
+                        <p className='text-[#717173]'>Rentemestervej 94 <br />
                         2400 København</p>
 
                         <p className='font-bold text-lg'>Åbningstider:</p>
@@ -94,6 +94,9 @@ const About = (props) => {
                 )}
                 </ModalContent>
             </Modal>
+
+            <Button className='bg-blue-400 text-white font-semibold text-md mt-5 px-12'>Bestil</Button>
+
         </div>
 
     </div>

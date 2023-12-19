@@ -8,7 +8,7 @@ const Herobanner = (props) => {
   return (
     <>
 
-        <div className='h-[335px] md:h-[260px] relative'>
+        <div className='h-[200px] md:h-[260px] relative'>
             <img className='h-full w-full object-cover' src={url} />
             <div className='absolute bg-[#0000009e] h-full w-full top-0'></div>
 
@@ -16,11 +16,6 @@ const Herobanner = (props) => {
               <h1 className='text-2xl lg:text-5xl font-semibold'>BEHOV Pizza Rentemestervej</h1>
               <p className='py-3 text-md lg:text-lg'>Mundvandsdrivende pizza</p>
 
-              <div className='md:flex gap-2 items-center w-full'>
-                <p className='bg-white w-fit text-black rounded-md px-2 py-1 text-xs md:text-sm mb-3 md:mb-0'>Levering: 59,00 kr.</p>
-                <p className='bg-white w-fit text-black rounded-md px-2 py-1 text-xs md:text-sm mb-3 md:mb-0'>Minimum ordre: 75,00 kr.</p>
-                <p className='bg-white w-fit text-black rounded-md px-2 py-1 text-xs md:text-sm'>Levering: 35-45 min.</p>
-              </div>
             </div>
 
           <div className="absolute bottom-[-34px] w-full flex items-center justify-center">
