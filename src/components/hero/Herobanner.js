@@ -8,7 +8,7 @@ const Herobanner = (props) => {
   return (
     <>
 
-        <div className='h-[200px] md:h-[260px] relative'>
+        <div className='h-[200px] md:h-[260px] relative wrapper'>
             <img className='h-full w-full object-cover' src={url} />
             <div className='absolute bg-[#0000009e] h-full w-full top-0'></div>
 
@@ -27,6 +27,7 @@ const Herobanner = (props) => {
           </div>
 
         </div>
+
 
 
     </>

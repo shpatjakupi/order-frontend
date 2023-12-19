@@ -1,7 +1,6 @@
 import React from 'react'
 import { FiClock } from "react-icons/fi";
 import { FaCircleInfo } from "react-icons/fa6";
-import { FcGoogle } from "react-icons/fc";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
 
 const About = (props) => {
@@ -11,11 +10,12 @@ const About = (props) => {
 
     <div className='textCenter text-black bg-white mt-10 md:mt-0'>
 
+        <div className='text-center mt-5 md:mt-10'>
+            <Button className='bg-blue-400 text-white font-semibold text-md px-12'>Bestil</Button>
+        </div>
+
         <div className='md:flex text-center justify-center md:justify-normal gap-5 items-center py-4 px-5'>
-            <div className='flex items-center justify-center mb-1 md:mb-0'>
-                <FcGoogle className='mr-1 text-md' />
-                <p className=''> 4.5 </p>
-            </div>
+
             <div className='flex items-center justify-center'>
                 <FiClock className='mr-1 text-md' />
                 <p> Åbent indtil 22.00</p>
@@ -94,8 +94,6 @@ const About = (props) => {
                 )}
                 </ModalContent>
             </Modal>
-
-            <Button className='bg-blue-400 text-white font-semibold text-md mt-5 px-12'>Bestil</Button>
 
         </div>
 
