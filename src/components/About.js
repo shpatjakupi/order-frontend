@@ -1,30 +1,30 @@
 import React from 'react'
 import { FiClock } from "react-icons/fi";
 import { FaCircleInfo } from "react-icons/fa6";
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Tooltip} from "@nextui-org/react";
 
 const About = (props) => {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   return (
 
-    <div className='textCenter text-black bg-white mt-10 md:mt-0'>
+    <div className='textCenter text-black bg-white  mt-14 md:mt-0'>
 
         <div className='text-center mt-5 md:mt-10'>
-            <Button className='bg-blue-400 text-white font-semibold text-md px-12'>Bestil</Button>
+            <Tooltip content="Bliv ført til bestilling!">
+                <Button  className='bg-blue-400 text-white font-semibold text-md px-12 btn-4 rounded-md'>Bestil</Button>
+            </Tooltip>
         </div>
 
-        <div className='md:flex text-center justify-center md:justify-normal gap-5 items-center py-4 px-5'>
+        <div className='md:flex text-center justify-center gap-5 items-center py-4 px-5'>
 
             <div className='flex items-center justify-center'>
                 <FiClock className='mr-1 text-md' />
                 <p> Åbent indtil 22.00</p>
             </div>
-            <div className='flex items-center justify-center'>
-                <FaCircleInfo className='text-md mr-1 text-blue-400' />
-                <Button className='bg-transparent w-fit p-0 m-0' onPress={onOpen}>Se mere information</Button>
-            </div>
-            <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+            
+            <Button startContent={<FaCircleInfo className='text-md text-blue-400 mr-[-4px]' />} className='bg-transparent w-fit p-0 m-0 text-md' onPress={onOpen}>Se mere information</Button>
+            <Modal className='z-[1000px]' isOpen={isOpen} onOpenChange={onOpenChange}>
                 <ModalContent>
                 {(onClose) => (
                     <>
@@ -87,7 +87,7 @@ const About = (props) => {
                     </ModalBody>
                     <ModalFooter>
                         <Button className='bg-gray-100 text-black' onPress={onClose}>
-                        Close
+                        Cancel
                         </Button>
                     </ModalFooter>
                     </>

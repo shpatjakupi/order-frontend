@@ -8,15 +8,20 @@ const Herobanner = (props) => {
   return (
     <>
 
-        <div className='h-[200px] md:h-[260px] relative wrapper'>
-            <img className='h-full w-full object-cover' src={url} />
-            <div className='absolute bg-[#0000009e] h-full w-full top-0'></div>
+        <div 
+        className='h-[200px] md:h-[260px] relative img wrappper'
+        >
+          <img className='h-full w-full object-cover z-50 img' src={url} />
+          <div className='absolute bg-[#0000009e] h-full w-full top-0'>
+          </div>
 
-            <div className='absolute left-5 right-5 bottom-[70px] lg:bottom-16 text-white'>
+          <div className='absolute left-0 right-0 top-0 bottom-0 flex items-center justify-center text-white'>
+            <div className='text-center'>
               <h1 className='text-2xl lg:text-5xl font-semibold'>BEHOV Pizza Rentemestervej</h1>
               <p className='py-3 text-md lg:text-lg'>Mundvandsdrivende pizza</p>
-
             </div>
+          </div>
+
 
           <div className="absolute bottom-[-34px] w-full flex items-center justify-center">
             <img
@@ -27,8 +32,6 @@ const Herobanner = (props) => {
           </div>
 
         </div>
-
-
 
     </>
   )

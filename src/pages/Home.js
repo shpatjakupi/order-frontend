@@ -6,12 +6,17 @@ import About from 'components/About';
 import { FcGoogle } from "react-icons/fc";
 
 const Home = () => {
+
+  const phoneNumber = '21907404';
+
   return (
     <div>
 
       <Herobanner />
       <About />
-      <FaSquarePhone className='fixed text-4xl lg:bottom-12 bottom-20 right-3 text-blue-400 rounded-md' />
+      <a className='cursor-pointer	' href={`tel:${phoneNumber}`}>
+        <FaSquarePhone className='fixed cursor-pointer text-4xl lg:bottom-12 bottom-20 right-3 text-blue-400 rounded-md' />
+      </a>
 
       <div className='fixed lg:bottom-12 bottom-20 left-3 flex items-center justify-center mb-1 md:mb-0'>
         <FcGoogle className='mr-1 text-md' />
