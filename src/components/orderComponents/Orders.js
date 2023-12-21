@@ -13,58 +13,58 @@ const Orders = () => {
   const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchData = async () => {
+        // const fetchData = async () => {
             
-            try {
+        //     try {
 
-                // Set loading to true while fetching data
-                setLoading(true);
-                
-                const headers = new Headers({
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Basic ' + btoa('john:test123'),
-                  });
+        //         // Set loading to true while fetching data
+        //         setLoading(true);
+
+        //         const headers = new Headers({
+        //             'Content-Type': 'application/json',
+        //             'Authorization': 'Basic ' + btoa('john:test123'),
+        //           });
                   
-                  const requestOptions = {
-                    method: 'GET',
-                    headers: headers,
-                  };
+        //           const requestOptions = {
+        //             method: 'GET',
+        //             headers: headers,
+        //           };
                   
-                  const response = await fetch('http://order.eu-north-1.elasticbeanstalk.com/menu/food', requestOptions);                  
+        //           const response = await fetch('http://order.eu-north-1.elasticbeanstalk.com/menu/food', requestOptions);                  
               
-              // Check if the response is successful (status code 200-299)
-              if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-              }
+        //       // Check if the response is successful (status code 200-299)
+        //       if (!response.ok) {
+        //         throw new Error(`HTTP error! Status: ${response.status}`);
+        //       }
       
-              // Parse the response data as JSON
-              const result = await response.json();
+        //       // Parse the response data as JSON
+        //       const result = await response.json();
       
-              // Set the fetched data in the state
-              setData(result);
-              console.log(data);
-            } catch (error) {
-              // Set error state if there is an error
-              setError(error);
-            } finally {
-              // Set loading to false when the request is complete
-              setLoading(false);
-            }
+        //       // Set the fetched data in the state
+        //       setData(result);
+        //       console.log(data);
+        //     } catch (error) {
+        //       // Set error state if there is an error
+        //       setError(error);
+        //     } finally {
+        //       // Set loading to false when the request is complete
+        //       setLoading(false);
+        //     }
 
-        };
+        // };
 
-        fetchData();
+        // fetchData();
 
     }, []);
 
-      // Render content based on loading and error states
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+//       // Render content based on loading and error states
+//   if (loading) {
+//     return <p>Loading...</p>;
+//   }
 
-  if (error) {
-    return <p>Error: {error.message}</p>;
-  }
+//   if (error) {
+//     return <p>Error: {error.message}</p>;
+//   }
 
   return (
     <div className='mt-10 px-4'>
