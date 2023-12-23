@@ -21,55 +21,55 @@ const Orders = () => {
 
     const [selectedCategory, setSelectedCategory] = useState(null);
 
-    const uniqueCategories = [...new Set(menuData.map(item => item.category))];
-
-    console.log(uniqueCategories);
-
+    const uniqueCategories = [...new Set(data.map(item => item.foodkey))];
 
     useEffect(() => {
-        // const fetchData = async () => {
+        const fetchData = async () => {
             
-        //     try {
+            try {
 
-        //         // Set loading to true while fetching data
-        //         setLoading(true);
+                // Set loading to true while fetching data
+                setLoading(true);
 
-        //         const headers = new Headers({
-        //             'Content-Type': 'application/json',
-        //             'Authorization': 'Basic ' + btoa('john:test123'),
-        //           });
+                const headers = new Headers({
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Basic ' + btoa('john:test123'),
+                  });
                   
-        //           const requestOptions = {
-        //             method: 'GET',
-        //             headers: headers,
-        //           };
+                  const requestOptions = {
+                    method: 'GET',
+                    headers: headers,
+                  };
                   
-        //           const response = await fetch('http://order.eu-north-1.elasticbeanstalk.com/menu/food', requestOptions);                  
+                  const response = await fetch('http://order.eu-north-1.elasticbeanstalk.com/menu/food', requestOptions);                  
               
-        //       // Check if the response is successful (status code 200-299)
-        //       if (!response.ok) {
-        //         throw new Error(`HTTP error! Status: ${response.status}`);
-        //       }
+              // Check if the response is successful (status code 200-299)
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+              }
       
-        //       // Parse the response data as JSON
-        //       const result = await response.json();
+              // Parse the response data as JSON
+              const result = await response.json();
       
-        //       // Set the fetched data in the state
-        //       setData(result);
-        //       console.log(data);
-        //     } catch (error) {
-        //       // Set error state if there is an error
-        //       setError(error);
-        //     } finally {
-        //       // Set loading to false when the request is complete
-        //       setLoading(false);
-        //     }
+              // Set the fetched data in the state
+              setData(result);
+              console.log(data);
+            } catch (error) {
+              // Set error state if there is an error
+              setError(error);
+            } finally {
+              // Set loading to false when the request is complete
+              setLoading(false);
+            }
 
-        // };
+        };
 
-        // fetchData();
+        fetchData();
 
     }, []);
+
+    console.log(data);
+
 
 //       // Render content based on loading and error states
 //   if (loading) {
@@ -193,10 +193,10 @@ const Orders = () => {
                     <div key={category}>
                     <h2 className='text-4xl font-bold my-5'>{category}</h2>
                     <ul>
-                        {menuData
+                        {data
                         .filter(item => (selectedCategory ? item.category === selectedCategory : true))
                         .map(item => (
-                            <div className='flex gap-6 justify-between mt-7 border-b pb-4'>
+                            <div key={item.id} className='flex gap-6 justify-between mt-7 border-b py-4 px-1 hover:bg-gray-100 hover:rounded-md cursor-pointer'>
                                 <div> 
                                     <p className='font-semibold mb-1'>{item.name}</p>
                                     <p className='text-sm text-[#717173]'>{item.description}</p>
