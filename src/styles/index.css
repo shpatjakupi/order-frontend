@@ -22,3 +22,16 @@
 .img img {
     z-index: 50;
 }
+
+.basketbtn {
+  z-index: 1000;
+}
+
+.basketbtn:hover {
+  background-color: bg-blue-400;
+}
+
+
+.items-centerr {
+  align-items: baseline;
+}

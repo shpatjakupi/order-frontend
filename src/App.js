@@ -4,11 +4,13 @@ import Navbar from "components/headers/Navbar";
 import Footer from "components/footers/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Order from "pages/Order";
+import { UserProvider } from '../src/context/usectx';
 
 export default function App() {
 
   return (
     <div>
+      <UserProvider>
       <Router>
         <Navbar />
         <Routes>
@@ -17,6 +19,7 @@ export default function App() {
         </Routes>
       </Router>
       <Footer domain="Vanløsepizza" />
+      </UserProvider>
     </div>
   );
 }
