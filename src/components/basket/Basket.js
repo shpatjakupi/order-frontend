@@ -4,9 +4,13 @@ import { useUserContext } from '../../context/usectx';
 
 const Basket = () => {
 
+    // states for the modal
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
-    const { basketCount, handleButtonClick, basketItems } = useUserContext();
 
+    // state that holds the value of menus in basket
+    const { basketItems } = useUserContext();
+
+    // func that gets total quantity of basket
     const totalQuantityInBasket = basketItems.reduce((total, item) => total + item.quantity, 0);
     
   return (

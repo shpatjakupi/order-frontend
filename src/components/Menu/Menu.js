@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useUserContext } from 'context/usectx';
 import {Input} from "@nextui-org/react";
 import { FaSearch } from "react-icons/fa";
-import {useDisclosure} from "@nextui-org/react";
 import SingleMenuItem from './SingleMenuItem';
 
 const Menu = () => {
-
-    const { basketCount, handleButtonClick, clickedItem } = useUserContext();
 
     // State to store the fetched data
     const [data, setData] = useState(null);
@@ -18,11 +14,10 @@ const Menu = () => {
 
     const [selectedCategory, setSelectedCategory] = useState(null);
 
+    // func that gets the foodkeys only 
     const uniqueCategories = data ? [...new Set(data.map(item => item.foodKey))] : [];
 
-    const {isOpen, onOpen, onOpenChange} = useDisclosure();
-
-
+    // triggers fetch as soon as the component gets called
     useEffect(() => {
         const fetchData = async () => {
             
@@ -67,18 +62,16 @@ const Menu = () => {
 
     }, []);
 
-
     // Render content based on loading and error states
     if (loading) {
         return <p>Loading...</p>;
     }
-
     if (error) {
         return <p>Error: {error.message}</p>;
     }
 
   return (
-    <div className=''>
+    <>
         <Input
             size='xs'
             startContent={
@@ -100,16 +93,13 @@ const Menu = () => {
                 {data && data
                 .filter(item => (selectedCategory ? item.foodkey === selectedCategory : true))
                 .map(item => (
-
                     <SingleMenuItem key={item.id} item={item} />
-                    
                 ))}
             </ul>
             </div>
             ))}
         </div>
-    </div>
-
+    </>
   )
 }
 
