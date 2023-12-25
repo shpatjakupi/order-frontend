@@ -89,7 +89,7 @@ const Menu = () => {
           {uniqueCategories.map(category => (
             <div key={category}>
               <h2 className='text-4xl font-bold my-5'>{category}</h2>
-              <ul>
+              <ul className=''>
                 {data && data
                   .filter(item => item.foodKey === category)
                   .map(item => (

@@ -75,12 +75,11 @@ const SingleMenuItem = (props) => {
     <Button 
     onPress={onOpen} 
     key={props.item.id} 
-    className='w-full justify-between items-baseline h-24 mb-5 bg-gray-100 rounded-md hover:bg-gray-300'
+    className='w-full lg:w-1/2 justify-between items-baseline h-24 mb-5 bg-gray-100 rounded-md hover:bg-gray-300'
     >
         <div className='w-1/2 max-w-[50%] text-left'>
             <p className='font-semibold mb-1'>{props.item.name}</p>
             <p className='text-xs text-[#717173]'>{props.item.description}</p>
-            <p className='mt-2'>{props.item.foodKey}</p>
         </div>
         <div>
         <p className='mt-5 text-sm text-blue-400'>{`${props.item.price} kr.`}</p>

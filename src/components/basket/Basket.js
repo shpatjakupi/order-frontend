@@ -1,5 +1,5 @@
 import React from 'react'
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input} from "@nextui-org/react";
 import { useUserContext } from '../../context/usectx';
 
 const Basket = () => {
@@ -31,15 +31,31 @@ const Basket = () => {
                 <>
                 <ModalHeader className="flex flex-col gap-1 text-xl border-b">Din bestilling</ModalHeader>
                 <ModalBody>
-                {basketItems.length > 0 ? basketItems.map((item) => (
-                    <div 
-                    key={item.id}
-                    className='flex justify-between'
-                    >
-                        <p>{item.name}</p>
-                        <p>x {item.quantity} </p>
+                {basketItems.length > 0 ? 
+                basketItems.map((item) => (
+                    <div>
+                        <div 
+                        key={item.id}
+                        className='flex justify-between'
+                        >
+                            <p>{item.name}</p>
+                            <p>x {item.quantity} </p>
+                        </div>
                     </div>
-                )) : <p>Din indkøbskurv er tom.</p> }
+
+                ) )  
+                : <p>Din indkøbskurv er tom.</p> 
+                }
+                {basketItems.length > 0 && (
+                    <div className='mt-5'>
+                        <label className='' htmlFor="comment">Kommentar:</label>
+                        <Input
+                            type="text"
+                            id="comment"
+                            className='mt-2'
+                        />
+                    </div>
+                )}
                 </ModalBody>
                 <ModalFooter>
                 <Button className='bg-blue-400 w-full text-left flex justify-between p-4 text-white basketbtn rounded-md' onPress={onOpen}>
