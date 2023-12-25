@@ -31,7 +31,7 @@ const Basket = () => {
                 <>
                 <ModalHeader className="flex flex-col gap-1 text-xl border-b">Din bestilling</ModalHeader>
                 <ModalBody>
-                {basketItems.map((item) => (
+                {basketItems.length > 0 ? basketItems.map((item) => (
                     <div 
                     key={item.id}
                     className='flex justify-between'
@@ -39,7 +39,7 @@ const Basket = () => {
                         <p>{item.name}</p>
                         <p>x {item.quantity} </p>
                     </div>
-                ))}
+                )) : <p>Din indkøbskurv er tom.</p> }
                 </ModalBody>
                 <ModalFooter>
                 <Button className='bg-blue-400 w-full text-left flex justify-between p-4 text-white basketbtn rounded-md' onPress={onOpen}>

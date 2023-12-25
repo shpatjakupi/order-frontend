@@ -23,6 +23,9 @@ const Home = () => {
         <p className=''> 4.5 </p>
       </div>
 
+      <Footer domain="Ordrupspizza" position="absolute" />
+
+
     </div>
 
     

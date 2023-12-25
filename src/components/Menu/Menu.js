@@ -86,18 +86,18 @@ const Menu = () => {
             <p className='text-sm'>G - Glutenfri</p>
         </div>
         <div className='mt-10'>
-            {uniqueCategories && uniqueCategories.map(foodkey => (
-            <div key={foodkey}>
-            <h2 className='text-4xl font-bold my-5'>{foodkey}</h2>
-            <ul>
+          {uniqueCategories.map(category => (
+            <div key={category}>
+              <h2 className='text-4xl font-bold my-5'>{category}</h2>
+              <ul>
                 {data && data
-                .filter(item => (selectedCategory ? item.foodkey === selectedCategory : true))
-                .map(item => (
-                    <SingleMenuItem key={item.id} item={item} />
-                ))}
-            </ul>
+                  .filter(item => item.foodKey === category)
+                  .map(item => (
+                    <SingleMenuItem key={item.id} uniqueCategories={uniqueCategories} item={item} />
+                  ))}
+              </ul>
             </div>
-            ))}
+          ))}
         </div>
     </>
   )
