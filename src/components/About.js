@@ -33,7 +33,7 @@ const About = (props) => {
                 {(onClose) => (
                     <>
                     <ModalHeader className="flex flex-col gap-1">
-                        <h2 className='text-xl font-bold'>BEHOV Pizza Rentemestervej</h2>
+                        <h2 className='text-xl font-bold'>Ordrups Pizza</h2>
                         <div className='flex items-center'>
                             <div className='bg-red-500 dark:bg-[#65e295] w-[12px] h-[12px] rounded-full mr-1 shrinkAndGrow animate-pulse text-sm'></div>
                             <p className='text-sm text-[#717173] font-light'>Søndag 11.00–21.00</p>
@@ -42,14 +42,14 @@ const About = (props) => {
                     <hr />
                     <ModalBody>
                         <p> 
-                        Behov serverer autentiske italiensk pizzaer. Om du er til farverige kombinationer hver gang, eller du for længst har fundet din egen klassiker, kan du få din pizza lige som du vil have den.
+                        Bestil lækker og velsmagende pizza, pastaretter, burger og meget mere hos Ordrup’s Pizza, hvor prisen er lav og kvaliteten høj. Vi glæder os til at se dig i Charlottenlund, og lægger vægt på at give dig en god service. 
                         </p>
 
-                        <p className='font-bold text-lg'>Adresse:</p>
-                        <p className='text-[#717173]'>Rentemestervej 94 <br />
-                        2400 København</p>
+                        <p className='font-bold text-lg mb-[-10px]'>Adresse:</p>
+                        <p className='text-[#717173]'>Ordrupvej 102, <br />
+                        2920 Charlottenlund</p>
 
-                        <p className='font-bold text-lg'>Åbningstider:</p>
+                        <p className='font-bold text-lg mb-[-8px]'>Åbningstider:</p>
                         <div className='text-sm'>
 
                             <div className='flex justify-between w-full'>
@@ -91,7 +91,7 @@ const About = (props) => {
                     </ModalBody>
                     <ModalFooter>
                         <Button className='bg-gray-100 text-black' onPress={onClose}>
-                        Cancel
+                        Luk
                         </Button>
                     </ModalFooter>
                     </>

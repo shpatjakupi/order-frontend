@@ -17,8 +17,7 @@ const Herobanner = (props) => {
 
           <div className='absolute left-0 right-0 top-0 bottom-0 flex items-center justify-center text-white'>
             <div className='text-center'>
-              <h1 className='text-2xl lg:text-5xl font-semibold'>BEHOV Pizza Rentemestervej</h1>
-              <p className='py-3 text-md lg:text-lg'>Mundvandsdrivende pizza</p>
+              <h1 className='text-4xl lg:text-5xl font-semibold'>Ordrups Pizza</h1>
             </div>
           </div>
 
