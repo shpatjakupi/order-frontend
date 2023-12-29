@@ -7,7 +7,7 @@ const SingleMenuItem = (props) => {
 
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
-    const {addToBasket, quantity, increaseQuantity, decreaseQuantity } = useUserContext();
+    const {addToBasket, quantity, increaseQuantity, decreaseQuantity, selectedToppings, setSelectedToppings, setQuantity} = useUserContext();
 
         // State to store the fetched data
         const [tilvalg, setTilvalg] = useState('');
@@ -66,23 +66,49 @@ const SingleMenuItem = (props) => {
             return tilvalg.filter(item => 
               item.foodKey && item.foodKey.split(',').some(key => key.trim() === menuFoodKey.trim())
             );
-          };
-        
+        };
 
+        // Function to handle checkbox toggle
+        const handleCheckboxChange = (topping) => {
+            setSelectedToppings((prevToppings) => {
+            if (prevToppings.includes(topping)) {
+                // Remove topping if already selected
+                return prevToppings.filter((selected) => selected !== topping);
+            } else {
+                // Add topping if not selected
+                return [...prevToppings, topping];
+            }
+            });
+        };
+
+         // Function to add to basket with toppings
+        const addToBasketWithToppings = () => {
+            // console.log("Selected Toppings:", selectedToppings);
+            // console.log("Props Item:", props.item);
+
+            const itemWithToppings = {
+            ...props.item,
+            selectedToppings: selectedToppings,
+            };
+
+            addToBasket(itemWithToppings);
+            setQuantity(1);
+            setSelectedToppings([]); // Reset toppings for the next item
+        };
 
   return (
-    <div>
+    <div className='lg:lg:w-[49%]'>
     <Button 
     onPress={onOpen} 
     key={props.item.id} 
-    className='w-full lg:w-1/2 justify-between items-baseline h-24 mb-5 bg-gray-100 rounded-md hover:bg-gray-300'
+    className='w-full justify-between items-baseline h-24 mb-5 bg-gray-100 rounded-md hover:bg-gray-300'
     >
         <div className='w-1/2 max-w-[50%] text-left'>
-            <p className='font-semibold mb-1'>{props.item.name}</p>
+            <p className='font-semibold mb-1'> {props.item.id}. {props.item.name}</p>
             <p className='text-xs text-[#717173]'>{props.item.description}</p>
         </div>
         <div>
-        <p className='mt-5 text-sm text-blue-400'>{`${props.item.price} kr.`}</p>
+        <p className='mt-5 text-sm text-black'>{`${props.item.price} kr.`}</p>
         </div>                    
     </Button>
     <Modal 
@@ -97,14 +123,14 @@ const SingleMenuItem = (props) => {
         {(onClose) => (
             <>
             <ModalHeader className="flex flex-col gap-1 border-b">
-                {props.item.name}
+            {props.item.name}
             </ModalHeader>
             <ModalBody>
-                <p className='text-blue-400'>
-                    {props.item.price} kr.
+                <p className='text-black'>
+                  <span className='font-semibold'>Pris</span> <br /> {props.item.price} kr.
                 </p>
                 <p> 
-                    {props.item.description}
+                    <span className='font-semibold'>Indhold</span> <br /> {props.item.description}
                 </p>
                 
                 <div>
@@ -112,19 +138,24 @@ const SingleMenuItem = (props) => {
                         Tilvalg
                     </p>
                     {filterTilvalgForMenu(tilvalg, props.item.foodKey).map((item) => (
-                        <div className='flex justify-between items-ce mb-2'>
+                        <div key={item.id} className='flex justify-between items-ce mb-2'>
                         <div className='flex'>
-                            <Checkbox color='default' />
+                            <Checkbox 
+                            color='default'
+                            onChange={() => handleCheckboxChange(item.name)}
+                            checked={selectedToppings.includes(item.name)}
+ 
+                            />
                             <p className='text-sm'>{item.name}</p>
                         </div>
-                        <p className='text-sm text-blue-400'>{item.price} kr.</p>
+                        <p className='text-sm text-black'>{item.price} kr.</p>
                         </div>
                     ))}
                 </div>
 
             </ModalBody>
             <ModalFooter className='flex justify-between'>
-                <div className='flex justify-between items-center gap-4 px-3 bg-gray-200 rounded-md text-blue-400'>
+                <div className='flex justify-between items-center gap-4 px-3 bg-gray-200 rounded-md text-black'>
                     <p 
                     className='cursor-pointer bg-white rounded-full px-[8px]'
                     onClick={decreaseQuantity}
@@ -139,7 +170,7 @@ const SingleMenuItem = (props) => {
                         +
                     </p>
                 </div>
-                <Button onClick={() => addToBasket(props.item)} className='bg-blue-400 text-white rounded-md' onPress={onClose}>
+                <Button onClick={() => addToBasketWithToppings(props.item, selectedToppings)} className='bg-green-600 text-white rounded-md' onPress={onClose}>
                 Tilføj til bestilling
                 </Button>
             </ModalFooter>

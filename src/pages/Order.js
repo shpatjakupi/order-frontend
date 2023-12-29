@@ -1,12 +1,12 @@
 import Orders from 'components/orderComponents/Orders'
 import React from 'react'
-import Hero from 'components/orderComponents/Hero';
 import Footer from 'components/footers/Footer';
+import Herobanner from 'components/hero/Herobanner';
 const Order = () => {
   return (
     <>
 
-    <Hero />
+    <Herobanner />
     <Orders />
 
     <Footer domain="Ordrupspizza" position="static" />

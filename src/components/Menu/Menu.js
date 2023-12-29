@@ -72,30 +72,30 @@ const Menu = () => {
 
   return (
     <>
-        <Input
+        {/* <Input
             size='xs'
             startContent={
             <FaSearch className="text-default-400 pointer-events-none flex-shrink-0 text-sm" />
             }
-            className='text-black mt-5 rounded-lg' 
+            className='text-black mt-10 rounded-lg lg:w-[49%]' 
             type="text" 
             placeholder="Søg efter noget spændende" 
-        />
-        <div className='mt-4'>
+        /> */}
+        {/* <div className='mt-4'>
             <p className='text-sm'>V - Vegetarisk</p>
             <p className='text-sm'>G - Glutenfri</p>
-        </div>
-        <div className='mt-10'>
+        </div> */}
+        <div className='mt-7'>
           {uniqueCategories.map(category => (
             <div key={category}>
               <h2 className='text-4xl font-bold my-5'>{category}</h2>
-              <ul className=''>
+              <div className='lg:flex lg:flex-wrap lg:justify-between'>
                 {data && data
                   .filter(item => item.foodKey === category)
                   .map(item => (
                     <SingleMenuItem key={item.id} uniqueCategories={uniqueCategories} item={item} />
                   ))}
-              </ul>
+              </div>
             </div>
           ))}
         </div>

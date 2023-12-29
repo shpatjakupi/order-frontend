@@ -14,12 +14,12 @@ const About = (props) => {
         <div className='text-center mt-5 md:mt-10'>
             <Tooltip content="Bliv ført til bestilling!">
                 <Link to="../order">
-                <Button  className='bg-blue-400 text-white font-semibold text-md px-12 btn-4 rounded-md'>Bestil</Button>               
+                <Button  className='bg-green-600 text-white font-semibold text-md px-12 btn-4 rounded-md'>Bestil</Button>               
                 </Link>
 
             </Tooltip>
         </div>
-
+{/* 
         <div className='md:flex text-center justify-center gap-5 items-center py-4 px-5'>
 
             <div className='flex items-center justify-center'>
@@ -99,7 +99,7 @@ const About = (props) => {
                 </ModalContent>
             </Modal>
 
-        </div>
+        </div> */}
 
     </div>
   )
