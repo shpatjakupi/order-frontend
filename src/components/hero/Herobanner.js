@@ -24,10 +24,10 @@ const Herobanner = (props) => {
             <div className='text-center'>
               <h1 className='text-4xl lg:text-5xl font-semibold'>Ordrups Pizza</h1>
 
-              <div className='mt-4 backdrop-blur-sm bg-white/30 p-3 rounded-lg'>
-                <p className='font-semibold'>Åbeningstider</p>
-                <p className='text-sm md:text-md'>Mandag - Fredag 13.00 - 22.00</p>
-                <p className='text-sm md:text-md'>Lørdag - Søndag 11.00 - 22.00</p>
+              <div className='mt-6 backdrop-blur-sm bg-white/30 p-3 rounded-lg'>
+                <p className='font-semibold mb-1'>Åbeningstider</p>
+                <p className='text-sm md:text-md font-light text-white'>Mandag - Fredag: <span className='text-[#fdfdfdda]'>13.00 - 22.00</span></p>
+                <p className='text-sm md:text-md font-light text-white'>Lørdag - Søndag: <span className='text-[#fdfdfdda]'>11.00 - 22.00</span></p>
 
                 <Button startContent={<FaCircleInfo className='text-sm md:text-md text-blue-300 mr-[-4px]' />} className='bg-transparent w-fit p-0 m-0 text-sm md:text-md text-white' onPress={onOpen}>Se mere information</Button>
                 <Modal className='z-[1000px]' isOpen={isOpen} onOpenChange={onOpenChange}>
