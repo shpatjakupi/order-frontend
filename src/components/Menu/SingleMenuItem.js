@@ -7,10 +7,8 @@ const SingleMenuItem = (props) => {
 
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
-    const {addToBasket, quantity, increaseQuantity, decreaseQuantity, selectedToppings, setSelectedToppings, setQuantity} = useUserContext();
+    const {quantity, increaseQuantity, decreaseQuantity, selectedToppings, setSelectedToppings, setQuantity, addToBasket, tilvalg, setTilvalg} = useUserContext();
 
-        // State to store the fetched data
-        const [tilvalg, setTilvalg] = useState('');
         // State to track loading status
         const [loading, setLoading] = useState(true);
         // State to track errors
@@ -60,42 +58,26 @@ const SingleMenuItem = (props) => {
             fetchData();
     
         }, []);
-        // console.log(props.item.foodKey);
+
 
         const filterTilvalgForMenu = (tilvalg, menuFoodKey) => {
-            return tilvalg.filter(item => 
+            return tilvalg?.filter(item => 
               item.foodKey && item.foodKey.split(',').some(key => key.trim() === menuFoodKey.trim())
             );
         };
 
-        // Function to handle checkbox toggle
         const handleCheckboxChange = (topping) => {
-            setSelectedToppings((prevToppings) => {
+          setSelectedToppings((prevToppings) => {
             if (prevToppings.includes(topping)) {
-                // Remove topping if already selected
-                return prevToppings.filter((selected) => selected !== topping);
+              // Remove topping if already selected
+              return prevToppings.filter((selected) => selected !== topping);
             } else {
-                // Add topping if not selected
-                return [...prevToppings, topping];
+              // Add topping if not selected
+              return [...prevToppings, topping];
             }
-            });
+          });
         };
-
-         // Function to add to basket with toppings
-        const addToBasketWithToppings = () => {
-            // console.log("Selected Toppings:", selectedToppings);
-            // console.log("Props Item:", props.item);
-
-            const itemWithToppings = {
-            ...props.item,
-            selectedToppings: selectedToppings,
-            };
-
-            addToBasket(itemWithToppings);
-            setQuantity(1);
-            setSelectedToppings([]); // Reset toppings for the next item
-        };
-
+      
   return (
     <div className='lg:lg:w-[49%]'>
     <Button 
@@ -170,7 +152,7 @@ const SingleMenuItem = (props) => {
                         +
                     </p>
                 </div>
-                <Button onClick={() => addToBasketWithToppings(props.item, selectedToppings)} className='bg-green-600 text-white rounded-md' onPress={onClose}>
+                <Button onClick={() => addToBasket(props.item)} className='bg-green-600 text-white rounded-md' onPress={onClose}>
                 Tilføj til bestilling
                 </Button>
             </ModalFooter>

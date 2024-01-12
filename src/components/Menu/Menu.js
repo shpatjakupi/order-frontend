@@ -15,7 +15,7 @@ const Menu = () => {
     const [selectedCategory, setSelectedCategory] = useState(null);
 
     // func that gets the foodkeys only 
-    const uniqueCategories = data ? [...new Set(data.map(item => item.foodKey))] : [];
+    const uniqueCategories = data ? [...new Set(data.map(item => item.foodKey.replace(/_/g, ' ')))] : [];
 
     // triggers fetch as soon as the component gets called
     useEffect(() => {
@@ -72,29 +72,16 @@ const Menu = () => {
 
   return (
     <>
-        {/* <Input
-            size='xs'
-            startContent={
-            <FaSearch className="text-default-400 pointer-events-none flex-shrink-0 text-sm" />
-            }
-            className='text-black mt-10 rounded-lg lg:w-[49%]' 
-            type="text" 
-            placeholder="Søg efter noget spændende" 
-        /> */}
-        {/* <div className='mt-4'>
-            <p className='text-sm'>V - Vegetarisk</p>
-            <p className='text-sm'>G - Glutenfri</p>
-        </div> */}
         <div className='mt-7'>
           {uniqueCategories.map(category => (
             <div key={category}>
               <h2 className='text-4xl font-bold my-5'>{category}</h2>
               <div className='lg:flex lg:flex-wrap lg:justify-between'>
-                {data && data
-                  .filter(item => item.foodKey === category)
-                  .map(item => (
-                    <SingleMenuItem key={item.id} uniqueCategories={uniqueCategories} item={item} />
-                  ))}
+              {data && data
+                .filter(item => item.foodKey.replace(/_/g, ' ') === category) // Adjust the filter here
+                .map(item => (
+                  <SingleMenuItem key={item.id} uniqueCategories={uniqueCategories} item={item} />
+                ))}
               </div>
             </div>
           ))}

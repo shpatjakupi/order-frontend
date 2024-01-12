@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input} from "@nextui-org/react";
 import { useUserContext } from '../../context/usectx';
 
@@ -10,10 +10,20 @@ const Basket = () => {
     // state that holds the value of menus in basket
     const { basketItems } = useUserContext();
 
+    useEffect(() => {
+        console.log(basketItems);
+    },[basketItems])
+
+    // Use reduce to calculate the total price
+    const totalPrice = basketItems.reduce((accumulator, currentItem) => {
+        return accumulator + currentItem.totalPrice;
+    }, 0);
+
     // func that gets total quantity of basket
     const totalQuantityInBasket = basketItems.reduce((total, item) => total + item.quantity, 0);
 
-    console.log(basketItems);
+
+
     
   return (
     <div className='fixed bottom-2 left-4 right-4 lg:w-1/3'>
@@ -24,7 +34,7 @@ const Basket = () => {
             </div>
 
             <div>
-                Pris: 0,00 kr.
+                {`Pris: ${totalPrice} kr.`}
             </div>
         </Button>
         <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
@@ -85,7 +95,7 @@ const Basket = () => {
                     </div>
 
                     <div>
-                        Pris: 0,00 kr.
+                    {`Pris: ${totalPrice} kr.`}
                     </div>
                 </Button>
                 </ModalFooter>

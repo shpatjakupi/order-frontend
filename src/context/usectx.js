@@ -11,6 +11,8 @@ export const UserProvider = ({ children }) => {
   const [quantity, setQuantity] = useState(1);
   // State to store selected toppings
   const [selectedToppings, setSelectedToppings] = useState([]);
+          // State to store the fetched data
+          const [tilvalg, setTilvalg] = useState('');
 
   const handleButtonClick = () => {
     // Increase basketItems by 1
@@ -18,28 +20,50 @@ export const UserProvider = ({ children }) => {
   };
 
   const addToBasket = (item) => {
-    const existingItem = basketItems.find((basketItem) => basketItem.id === item.id);
+    // Calculate item price
+    const itemPrice = parseFloat(item.price);
   
-    const updatedQuantity = quantity > 0 ? quantity : 1;
+    // Check if selectedToppings is defined and is an array
+    if (selectedToppings && Array.isArray(selectedToppings)) {
+      // Generate a unique identifier for this menu item
+      const uniqueIdentifier = `${item.id}-${selectedToppings.join('-')}`;
   
-    if (existingItem) {
-      const updatedBasketItems = basketItems.map((basketItem) =>
-        basketItem.id === item.id ? { ...basketItem, quantity: basketItem.quantity + updatedQuantity } : basketItem
-      );
+      // Calculate toppings price using reduce
+      const toppingsPrice = selectedToppings.reduce((total, toppingName) => {
+        // Find the topping in tilvalg array by name
+        const selectedTopping = tilvalg.find((t) => t.name === toppingName);
+        // If found, add the price, otherwise, add 0
+        return total + (selectedTopping ? parseFloat(selectedTopping.price) : 0);
+      }, 0);
   
-      setBasketItems(updatedBasketItems);
-      console.log("Updated Basket Items:", updatedBasketItems);
+      // Calculate total price
+      const totalPrice = quantity * (itemPrice + toppingsPrice);
+      console.log(`Total Price for ${uniqueIdentifier}:`, totalPrice);
+  
+      // Update the basketItems state with the new item
+      setBasketItems((prevBasketItems) => [
+        ...prevBasketItems,
+        { ...item, quantity, selectedToppings, totalPrice, uniqueIdentifier },
+      ]);
+      console.log(basketItems);
     } else {
-      const updatedBasketItems = [
-        ...basketItems,
-        { ...item, quantity: updatedQuantity, selectedToppings: item.selectedToppings },
-      ];
+      // If no toppings are selected, calculate total price without toppings
+      const totalPrice = quantity * itemPrice;
+      console.log(`Total Price for ${item.id}:`, totalPrice);
   
-      setBasketItems(updatedBasketItems);
-      console.log("Updated Basket Items:", updatedBasketItems);
+      // Update the basketItems state with the new item
+      setBasketItems((prevBasketItems) => [
+        ...prevBasketItems,
+        { ...item, quantity, selectedToppings, totalPrice },
+      ]);
     }
   
-    setQuantity(1);
+    // Clear selected toppings for the next item
+    setSelectedToppings([]);
+
+    console.log(basketItems);
+  
+    // Rest of the function...
   };
   
   
@@ -68,7 +92,9 @@ export const UserProvider = ({ children }) => {
         increaseQuantity,
         decreaseQuantity,
         selectedToppings,
-        setSelectedToppings
+        setSelectedToppings,
+        setTilvalg,
+        tilvalg
     }}>
       {children}
     </UserContext.Provider>
