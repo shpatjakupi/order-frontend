@@ -53,6 +53,19 @@ const AktiveOrdrer = () => {
 
                     </div>
                 </div>
+
+                <div>
+                    Pris: 420 kr.
+                </div>
+
+                <div className='mt-3 flex justify-between items-center gap-x-4'>
+                    <button
+                    className='bg-green-400 py-2 rounded-md font-bold w-full'
+                    >
+                        Klar til levering
+                    </button>
+                    <button className='bg-gray-300 p-2 rounded-md font-bold'>...</button>
+                </div>
             </div>
             
             <div className='bg-gray-100 p-4 rounded-md'>
@@ -98,6 +111,19 @@ const AktiveOrdrer = () => {
                     <p className='text-sm'> <span className='font-bold'>Topping:</span> Parmesan</p>
 
                     </div>
+                </div>
+
+                <div>
+                    Pris: 420 kr.
+                </div>
+
+                <div className='mt-3 flex justify-between items-center gap-x-4'>
+                    <button
+                    className='bg-green-400 py-2 rounded-md font-bold w-full'
+                    >
+                        Klar til levering
+                    </button>
+                    <button className='bg-gray-300 p-2 rounded-md font-bold'>...</button>
                 </div>
             </div>
 
