@@ -7,6 +7,7 @@ import { UserProvider } from '../src/context/usectx';
 import Admin from "pages/admin/Admin";
 import TidligereOrdrer from "components/admin/TidligereOrdrer";
 import AktiveOrdrer from "components/admin/AktiveOrdrer";
+import Idag from "components/admin/TidligereOrdrer/Idag";
 
 export default function App() {
 
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/Admin" element={<Admin />}>
             <Route path="aktive-ordrer" element={<AktiveOrdrer />} />
             <Route path="tidligere-ordrer" element={<TidligereOrdrer />} />
+            <Route path="idag" element={<Idag />} />
           </Route>
         </Routes>
       </Router>
