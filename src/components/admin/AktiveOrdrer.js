@@ -35,7 +35,7 @@ const AktiveOrdrer = () => {
                 </div>
 
                 <div className='flex gap-x-2 bg-white my-3 p-2 rounded-md'>
-                    <p className='rounded-full p-1 px-[11px] bg-green-500 text-white w-fit h-fit mr-5 text-sm'>1</p>
+                    <p className='rounded-full p-1 px-[11px] bg-green-600 text-white w-fit h-fit mr-5 text-sm'>1</p>
                     <div>
                     <p className='font-bold border-b mb-2 pb-1'>Burger menu</p>
                     <p className='text-sm'> <span className='font-bold'>Burger:</span> cheese okse</p>
@@ -46,7 +46,7 @@ const AktiveOrdrer = () => {
                 </div>
 
                 <div className='flex gap-x-2 bg-white my-3 p-2 rounded-md'>
-                    <p className='rounded-full p-1 px-[11px] bg-green-500 text-white w-fit h-fit mr-5 text-sm'>1</p>
+                    <p className='rounded-full p-1 px-[11px] bg-green-600 text-white w-fit h-fit mr-5 text-sm'>1</p>
                     <div>
                     <p className='font-bold border-b mb-2 pb-1'>Pizza Blanca</p>
                     <p className='text-sm'> <span className='font-bold'>Topping:</span> Parmesan</p>
@@ -60,14 +60,14 @@ const AktiveOrdrer = () => {
 
                 <div className='mt-3 flex justify-between items-center gap-x-4'>
                     <button
-                    className='bg-green-400 py-2 rounded-md font-bold w-full'
+                    className='bg-green-600 text-white py-2 rounded-md font-bold w-full'
                     >
                         Klar til levering
                     </button>
                     <button className='bg-gray-300 p-2 rounded-md font-bold'>...</button>
                 </div>
             </div>
-            
+
             <div className='bg-gray-100 p-4 rounded-md'>
     
                 <div className='flex justify-between items-center border-b border-gray-100 pb-3'>
@@ -94,7 +94,7 @@ const AktiveOrdrer = () => {
                 </div>
 
                 <div className='flex gap-x-2 bg-white my-3 p-2 rounded-md'>
-                    <p className='rounded-full p-1 px-[11px] bg-green-500 text-white w-fit h-fit mr-5 text-sm'>1</p>
+                    <p className='rounded-full p-1 px-[11px] bg-green-600 text-white w-fit h-fit mr-5 text-sm'>1</p>
                     <div>
                     <p className='font-bold border-b mb-2 pb-1'>Burger menu</p>
                     <p className='text-sm'> <span className='font-bold'>Burger:</span> cheese okse</p>
@@ -105,7 +105,7 @@ const AktiveOrdrer = () => {
                 </div>
 
                 <div className='flex gap-x-2 bg-white my-3 p-2 rounded-md'>
-                    <p className='rounded-full p-1 px-[11px] bg-green-500 text-white w-fit h-fit mr-5 text-sm'>1</p>
+                    <p className='rounded-full p-1 px-[11px] bg-green-600 text-white w-fit h-fit mr-5 text-sm'>1</p>
                     <div>
                     <p className='font-bold border-b mb-2 pb-1'>Pizza Blanca</p>
                     <p className='text-sm'> <span className='font-bold'>Topping:</span> Parmesan</p>
@@ -119,7 +119,7 @@ const AktiveOrdrer = () => {
 
                 <div className='mt-3 flex justify-between items-center gap-x-4'>
                     <button
-                    className='bg-green-400 py-2 rounded-md font-bold w-full'
+                    className='bg-green-600 text-white py-2 rounded-md font-bold w-full'
                     >
                         Klar til levering
                     </button>
