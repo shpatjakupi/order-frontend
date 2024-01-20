@@ -10,12 +10,21 @@ import { MdDriveFileRenameOutline } from "react-icons/md";
 
 const Payment = () => {
 
+  const [fuldeNavn, setFuldeNavn] = React.useState("");
+  const [adresse, setAdresse] = React.useState("");
+  const [mail, setMail] = React.useState("");
+
+
   // state that holds the value of menus in basket
   const { basketItems, totalPrice } = useUserContext();
 
   useEffect(() => {
     console.log(basketItems);
-  },[basketItems])
+  },[basketItems]);
+
+  const MakeAnOrder = () => {
+    console.log("hej");
+  }
 
   return (
     <div className='mb-16'>
@@ -36,7 +45,10 @@ const Payment = () => {
 
         <div className='my-10 rounded'>
           <p className='font-bold text-2xl mb-2'>Dine oplysninger</p>
+          
           <Input
+          value={fuldeNavn}
+          onValueChange={setFuldeNavn}
           size='md'
           type="text"
           label="Fulde navn"
@@ -48,6 +60,8 @@ const Payment = () => {
           }
           />
           <Input
+          value={adresse}
+          onValueChange={setAdresse}
           size='md'
           type="text"
           label="Addresse"
@@ -59,6 +73,8 @@ const Payment = () => {
           }
           />
           <Input
+          value={mail}
+          onValueChange={setMail}
           size='md'
           type="email"
           label="Email"
@@ -115,7 +131,11 @@ const Payment = () => {
         </div>
 
         <div className="fixed bottom-2 left-0 right-0 flex justify-center mx-4 md:right-0 md:w-1/2">
-          <Button className="w-full bg-green-600 text-white font-bold rounded-md h-12 text-lg">Bestil</Button>
+          <Button
+          onClick={MakeAnOrder}
+          className="w-full bg-green-600 text-white font-bold rounded-md h-12 text-lg">
+            Bestil
+          </Button>
         </div>
       </div>
       <Footer />
