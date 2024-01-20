@@ -8,6 +8,7 @@ import Admin from "pages/admin/Admin";
 import TidligereOrdrer from "components/admin/TidligereOrdrer";
 import AktiveOrdrer from "components/admin/AktiveOrdrer";
 import Idag from "components/admin/TidligereOrdrer/Idag";
+import Payment from "pages/Payment";
 
 export default function App() {
 
@@ -19,6 +20,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Order" element={<Order />} />
+          <Route path="/Payment" element={<Payment />} />
           <Route path="/Admin" element={<Admin />}>
             <Route path="aktive-ordrer" element={<AktiveOrdrer />} />
             <Route path="tidligere-ordrer" element={<TidligereOrdrer />} />

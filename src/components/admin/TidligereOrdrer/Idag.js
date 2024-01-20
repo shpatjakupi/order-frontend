@@ -5,7 +5,7 @@ const Idag = () => {
   return (
     <div className='m-5 w-2/3 lg:w-1/2'>
         
-        <p className='font-bold text-xl'>Idag:</p>
+        <p className='font-bold text-xl'>I dag:</p>
 
         <div className='flex items-center gap-x-4 mt-2'>
             <p>Salg: <span className='font-semibold'>426,00 kr.</span></p>

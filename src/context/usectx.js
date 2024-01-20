@@ -75,7 +75,10 @@ export const UserProvider = ({ children }) => {
     setQuantity((number) => (number > 1 ? number - 1 : 1));
   };
 
-  // You can add other context-related state or functions here
+  // Use reduce to calculate the total price
+  const totalPrice = basketItems.reduce((accumulator, currentItem) => {
+  return accumulator + currentItem.totalPrice;
+  }, 0);
 
   return (
     <UserContext.Provider 
@@ -94,7 +97,8 @@ export const UserProvider = ({ children }) => {
         selectedToppings,
         setSelectedToppings,
         setTilvalg,
-        tilvalg
+        tilvalg,
+        totalPrice
     }}>
       {children}
     </UserContext.Provider>

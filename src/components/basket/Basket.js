@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input} from "@nextui-org/react";
 import { useUserContext } from '../../context/usectx';
+import { Link } from 'react-router-dom';
 
 const Basket = () => {
 
@@ -8,19 +9,24 @@ const Basket = () => {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
     // state that holds the value of menus in basket
-    const { basketItems } = useUserContext();
+    const { basketItems, totalPrice } = useUserContext();
 
     useEffect(() => {
         console.log(basketItems);
     },[basketItems])
 
     // Use reduce to calculate the total price
-    const totalPrice = basketItems.reduce((accumulator, currentItem) => {
-        return accumulator + currentItem.totalPrice;
-    }, 0);
+    // const totalPrice = basketItems.reduce((accumulator, currentItem) => {
+    //     return accumulator + currentItem.totalPrice;
+    // }, 0);
 
     // func that gets total quantity of basket
     const totalQuantityInBasket = basketItems.reduce((total, item) => total + item.quantity, 0);
+
+
+    const sendOrder = () => {
+        // console.log("hej");
+    }
 
 
 
@@ -55,15 +61,16 @@ const Basket = () => {
                                     <p className='mr-1'> {item.id}. </p>
                                     <p>{item.name}</p>
                                 </div>
-                                <p>x{item.quantity} </p>
+                                <p className='bg-white px-3 py-1 rounded-lg'>{item.quantity} </p>
                             </div>
+                            <p className='mt-2'>{item.totalPrice} kr.</p>
 
                             {item.selectedToppings.length > 0 && (
                                 <div className='mt-3'>
                                     <p className='font-bold'>Tilvalg:</p>
                                     <div>
                                         {item.selectedToppings.map((topping) => (
-                                            <p key={topping}>{topping}</p>
+                                            <p key={topping}>{topping}  </p>
                                         ))}
                                     </div>
                                 </div>
@@ -88,7 +95,10 @@ const Basket = () => {
                 )}
                 </ModalBody>
                 <ModalFooter>
-                <Button className='bg-green-600 w-full text-left flex justify-between p-4 text-white basketbtn rounded-md' onPress={onOpen}>
+                <Button 
+                className='bg-green-600 text-left w-full p-4 text-white basketbtn rounded-md' onPress={onOpen}
+                >
+                    <Link className='flex justify-between w-full' to="/payment">
                     <div className='flex items-center'>
                         <span className='mr-3 bg-white text-green-600 text-sm rounded-full px-[7px]'>{totalQuantityInBasket}</span>
                         <p>Gå til kasse</p>
@@ -97,6 +107,7 @@ const Basket = () => {
                     <div>
                     {`Pris: ${totalPrice} kr.`}
                     </div>
+                    </Link>
                 </Button>
                 </ModalFooter>
                 </>
