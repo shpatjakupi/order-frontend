@@ -40,3 +40,7 @@ label#react-aria2596541780-\:r1\: {
   font-weight: bold;
   font-size: 16px;
 }
+
+.relative.w-full.inline-flex.tap-highlight-transparent.shadow-sm.px-3.border-medium.border-default-200.data-\[hover\=true\]\:border-default-400.min-h-unit-10.rounded-medium.flex-col.items-start.justify-center.gap-0.\!h-auto.transition-background.\!duration-150.group-data-\[focus\=true\]\:border-secondary.transition-colors.motion-reduce\:transition-none.h-14.py-2 {
+  border: 2px solid #d1d5db;
+}

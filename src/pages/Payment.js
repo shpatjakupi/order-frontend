@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import { IoIosArrowRoundBack } from "react-icons/io";
-import {Input} from "@nextui-org/react";
+import {Input, Textarea} from "@nextui-org/react";
 import { useUserContext } from 'context/usectx';
 import { Link, Button } from "@nextui-org/react";
 import Footer from 'components/footers/Footer';
@@ -86,7 +86,7 @@ const Payment = () => {
           />
         </div>
 
-        <div className='bg-gray-100 p-3 rounded-md'>
+        <div className='bg-[#f5f5f5] p-3 rounded-lg'>
         <h2 className='text-2xl font-bold'>Din ordrer fra</h2>
         <p className=' font-light text-sm'>Ordrups Pizza</p>
         {basketItems.map((item) => (
@@ -102,14 +102,14 @@ const Payment = () => {
                     </div>
                     <p className='bg-white px-3 py-1 rounded-lg'>{item.quantity} </p>
                 </div>
-                <p className='mt-2 text-neutral-400		'>{item.totalPrice} kr.</p>
+                <p className='mt-2 text-default-400'>{item.totalPrice} kr.</p>
 
                 {item.selectedToppings.length > 0 && (
                     <div className='mt-3'>
                         <p className='font-bold'>Tilvalg:</p>
                         <div>
                             {item.selectedToppings.map((topping) => (
-                                <p key={topping}>{topping}  </p>
+                                <p className='text-default-400' key={topping}>{topping}  </p>
                             ))}
                         </div>
                     </div>
@@ -119,9 +119,21 @@ const Payment = () => {
             </div>
           </div>
         ))}
-        <h3 className='mt-5 font-bold'>Total pris: {totalPrice} kr.</h3>
-        {/* You can add a payment form or other components related to payment */}
+
+        <div className='mt-5'>
+          <p className='mb-1'>Kommentar:</p>
+          <Textarea           
+          variant={'bordered'}
+          placeholder="Kundens kommentar"
+          className='rounded'
+          color='secondary'>
+          </Textarea>
         </div>
+        
+        <h3 className='mt-5 font-bold'>Total pris: {totalPrice} kr.</h3>
+
+        </div>
+
 
         <div className='mt-5 mb-10'>
         <p className='text-sm'>
@@ -133,7 +145,7 @@ const Payment = () => {
         <div className="fixed bottom-2 left-0 right-0 flex justify-center mx-4 md:right-0 md:w-1/2">
           <Button
           onClick={MakeAnOrder}
-          className="w-full bg-green-600 text-white font-bold rounded-md h-12 text-lg">
+          className="w-full bg-green-600 text-white font-bold rounded-lg h-12 text-lg">
             Bestil
           </Button>
         </div>
