@@ -11,8 +11,10 @@ export const UserProvider = ({ children }) => {
   const [quantity, setQuantity] = useState(1);
   // State to store selected toppings
   const [selectedToppings, setSelectedToppings] = useState([]);
-          // State to store the fetched data
-          const [tilvalg, setTilvalg] = useState('');
+  // State to store the fetched data
+  const [tilvalg, setTilvalg] = useState('');
+  // state that holds the comment value from user if user has a comment for his order
+  const [kommentar, setKommentar] = useState("");
 
   const handleButtonClick = () => {
     // Increase basketItems by 1
@@ -98,7 +100,9 @@ export const UserProvider = ({ children }) => {
         setSelectedToppings,
         setTilvalg,
         tilvalg,
-        totalPrice
+        totalPrice,
+        kommentar,
+        setKommentar
     }}>
       {children}
     </UserContext.Provider>

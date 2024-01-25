@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input} from "@nextui-org/react";
 import { useUserContext } from '../../context/usectx';
 import { Link } from 'react-router-dom';
+import {Textarea} from "@nextui-org/react";
 
 const Basket = () => {
 
@@ -9,7 +10,10 @@ const Basket = () => {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
     // state that holds the value of menus in basket
-    const { basketItems, totalPrice } = useUserContext();
+    const { basketItems, totalPrice, kommentar, setKommentar } = useUserContext();
+
+    // // state that holds the comment value from user if user has a comment for his order
+    // const [kommentar, setKommentar] = React.useState("");
 
     useEffect(() => {
         console.log(basketItems);
@@ -85,11 +89,17 @@ const Basket = () => {
                 }
                 {basketItems.length > 0 && (
                     <div className='mt-5'>
-                        <label className='' htmlFor="comment">Kommentar:</label>
-                        <Input
-                            type="text"
-                            id="comment"
-                            className='mt-2'
+                        <Textarea
+                        value={kommentar}
+                        onValueChange={setKommentar}
+                        label="Kommentar"
+                        variant="bordered"
+                        placeholder="Skriv en kommentar til restauranten her"
+                        disableAnimation
+                        disableAutosize
+                        classNames={{
+                            input: "resize-y min-h-[40px] w-full",
+                        }}
                         />
                     </div>
                 )}

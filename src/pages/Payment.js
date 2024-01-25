@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { IoIosArrowRoundBack } from "react-icons/io";
 import {Input, Textarea} from "@nextui-org/react";
 import { useUserContext } from 'context/usectx';
@@ -7,24 +7,91 @@ import Footer from 'components/footers/Footer';
 import { IoMdMail } from "react-icons/io";
 import { FaHome } from "react-icons/fa";
 import { MdDriveFileRenameOutline } from "react-icons/md";
+import {Autocomplete, AutocompleteItem} from "@nextui-org/react";
 
 const Payment = () => {
 
-  const [fuldeNavn, setFuldeNavn] = React.useState("");
-  const [adresse, setAdresse] = React.useState("");
-  const [mail, setMail] = React.useState("");
+  const leveringtidspunkter = [
+    'Hurtigst muligt',
+    '13.00',
+    '13.30',
+    '14.00',
+    '14.30'
+  ];
 
+  const [fuldeNavn, setFuldeNavn] = useState("");
+  const [adresse, setAdresse] = useState("");
+  const [mail, setMail] = useState("");
+  const [responseMessage, setResponseMessage] = useState('');
 
   // state that holds the value of menus in basket
-  const { basketItems, totalPrice } = useUserContext();
+  const { basketItems, totalPrice, kommentar } = useUserContext();
 
   useEffect(() => {
     console.log(basketItems);
   },[basketItems]);
 
-  const MakeAnOrder = () => {
-    console.log("hej");
-  }
+  const MakeAnOrder = async () => {
+    const apiUrl = 'http://order.eu-north-1.elasticbeanstalk.com/customer/sendOrder';
+  
+    // Map basketItems to the expected structure in the items array
+    const itemsData = basketItems.map((basketItem) => ({
+      description: basketItem.description,
+      price: basketItem.price,
+      quantity: basketItem.quantity,
+      selectedToppings: basketItem.selectedToppings,
+      totalPrice: basketItem.totalPrice
+      // ... andre relevante egenskaber fra basketItem
+    }));
+  
+    const data = {
+      order: {
+        name: fuldeNavn,
+        details: adresse,
+        fullPrice: totalPrice,
+        orderedDate: '2024-01-21 22:00:00', // Check the format
+        pickUpDate: '2024-01-19 22:30:00',  // Check the format
+        preOrder: false,
+        orderDone: false,
+        comment: "Pizza ekstra sprød"
+      },
+      items: itemsData,
+    };
+    
+    console.log('Data before sending:', data);
+
+  
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        mode: 'cors', 
+        headers: {
+          'Content-Type': 'text/plain',
+          'Authorization': 'Basic ' + btoa('john:test123'),
+        },
+        body: JSON.stringify(data),
+        credentials: 'include',
+      });      
+      
+      console.log('Response:', response);
+      
+  
+      if (!response.ok) {
+        console.error('Server error:', response.status, response.statusText);
+        setResponseMessage('An error occurred on the server.');
+        return;
+      }
+  
+      const responseData = await response.json();
+      console.log('Response Data:', responseData);
+
+      setResponseMessage(responseData.message);
+    } catch (error) {
+      console.error('Error sending POST request:', error);
+      setResponseMessage('An error occurred while sending the request.');
+    }
+  };
+  
 
   return (
     <div className='mb-16'>
@@ -86,6 +153,23 @@ const Payment = () => {
           />
         </div>
 
+        <div className='bg-[#f5f5f5] p-3 rounded-lg mb-10'>
+          <p className='font-bold text-2xl mb-3'>Afhentning</p>
+          <Autocomplete 
+            variant={'bordered'}
+            labelPlacement={'outside'}
+            label="Vælg et tidspunkt for afhentning" 
+            className="max-w-xs" 
+          >
+            {leveringtidspunkter.map((tidspunkt, index) => (
+              <AutocompleteItem key={index} value={tidspunkt}>
+                {tidspunkt}
+              </AutocompleteItem>
+            ))}
+          </Autocomplete>
+          
+        </div>
+
         <div className='bg-[#f5f5f5] p-3 rounded-lg'>
         <h2 className='text-2xl font-bold'>Din ordrer fra</h2>
         <p className=' font-light text-sm'>Ordrups Pizza</p>
@@ -121,10 +205,11 @@ const Payment = () => {
         ))}
 
         <div className='mt-5'>
-          <p className='mb-1'>Kommentar:</p>
-          <Textarea           
+          <p className='mb-1'>Din kommentar</p>
+          <Textarea      
+          isReadOnly     
           variant={'bordered'}
-          placeholder="Kundens kommentar"
+          placeholder={kommentar ? kommentar : 'Ingen kommentar til restauranten'}
           className='rounded'
           color='secondary'>
           </Textarea>
@@ -149,8 +234,9 @@ const Payment = () => {
             Bestil
           </Button>
         </div>
+        <p>{responseMessage}</p>
       </div>
-      <Footer />
+      <Footer domain="Ordrupspizza" />
     </div>
 
   )
