@@ -28,7 +28,7 @@ const Menu = () => {
 
                 const headers = new Headers({
                     'Content-Type': 'application/json',
-                    'Authorization': 'Basic ' + btoa('john:test123'),
+                    'Authorization': 'Basic ' + btoa('john:test1234'),
                   });
                   
                   const requestOptions = {

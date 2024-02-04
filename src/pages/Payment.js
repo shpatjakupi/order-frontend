@@ -11,14 +11,6 @@ import {Autocomplete, AutocompleteItem} from "@nextui-org/react";
 
 const Payment = () => {
 
-  const leveringtidspunkter = [
-    'Hurtigst muligt',
-    '13.00',
-    '13.30',
-    '14.00',
-    '14.30'
-  ];
-
   const [fuldeNavn, setFuldeNavn] = useState("");
   const [adresse, setAdresse] = useState("");
   const [mail, setMail] = useState("");
@@ -26,6 +18,14 @@ const Payment = () => {
 
   // state that holds the value of menus in basket
   const { basketItems, totalPrice, kommentar } = useUserContext();
+
+  const leveringtidspunkter = [
+    'Hurtigst muligt',
+    '13.00',
+    '13.30',
+    '14.00',
+    '14.30'
+  ];
 
   useEffect(() => {
     console.log(basketItems);
@@ -39,41 +39,42 @@ const Payment = () => {
       description: basketItem.description,
       price: basketItem.price,
       quantity: basketItem.quantity,
-      selectedToppings: basketItem.selectedToppings,
+      selectedToppings: basketItem.selectedToppings.join(', '),
       totalPrice: basketItem.totalPrice
       // ... andre relevante egenskaber fra basketItem
     }));
   
     const data = {
-      order: {
+      "order": {
         name: fuldeNavn,
         details: adresse,
         fullPrice: totalPrice,
-        orderedDate: '2024-01-21 22:00:00', // Check the format
-        pickUpDate: '2024-01-19 22:30:00',  // Check the format
+        orderedDate: '2024-02-04 22:00:00', // Check the format
+        pickUpDate: '2024-02-04 22:30:00',  // Check the format
         preOrder: false,
         orderDone: false,
-        comment: "Pizza ekstra sprød"
+        comment: "Pizza ekstra sprød",
       },
-      items: itemsData,
+      "items": itemsData
     };
     
-    console.log('Data before sending:', data);
-
+    console.log(JSON.stringify(data));
   
     try {
       const response = await fetch(apiUrl, {
+        credentials: 'include',
         method: 'POST',
         mode: 'cors', 
         headers: {
-          'Content-Type': 'text/plain',
-          'Authorization': 'Basic ' + btoa('john:test123'),
+          'Content-Type': 'application/json',
+          'Authorization': 'Basic ' + btoa('john:test1234'),
         },
+        mode: 'cors', // Ensure you set the mode to 'cors'
         body: JSON.stringify(data),
-        credentials: 'include',
+        // credentials: 'include',
       });      
       
-      console.log('Response:', response);
+      console.log('Response:', response.body);
       
   
       if (!response.ok) {

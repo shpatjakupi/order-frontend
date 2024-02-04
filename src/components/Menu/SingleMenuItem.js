@@ -23,17 +23,16 @@ const SingleMenuItem = (props) => {
                     // Set loading to true while fetching data
                     setLoading(true);
     
-                    const headers = new Headers({
+                    const requestOptions = {
+                      method: 'GET',
+                      headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': 'Basic ' + btoa('john:test123'),
-                      });
+                        'Authorization': 'Basic ' + btoa('john:test1234'),
+                      },
+                      mode: 'cors', // Ensure you set the mode to 'cors'
+                    };
                       
-                      const requestOptions = {
-                        method: 'GET',
-                        headers: headers,
-                      };
-                      
-                      const response = await fetch('http://order.eu-north-1.elasticbeanstalk.com/menu/filling?foodId=39', requestOptions);                  
+                      const response = await fetch('http://order.eu-north-1.elasticbeanstalk.com/menu/filling?foodId=4', requestOptions);                  
                   
                   // Check if the response is successful (status code 200-299)
                   if (!response.ok) {
@@ -44,6 +43,7 @@ const SingleMenuItem = (props) => {
                   const result = await response.json();
           
                   // Set the fetched data in the state
+                  console.log(result);
                   setTilvalg(result);
                 } catch (error) {
                   // Set error state if there is an error
