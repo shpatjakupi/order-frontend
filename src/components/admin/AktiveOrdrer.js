@@ -31,34 +31,66 @@ const AktiveOrdrer = () => {
     };
 
     fetchData();
+    console.log(orders);
+
   }, []); 
 
   return (
     <div className='flex gap-x-5 mx-2'>
         {orders.map((orderData, index) => (
-        <>
-          <div className='bg-blue-500 p-2' key={index}>
-            <h2>Name: {orderData.order.name}</h2>
-            <p>Details: {orderData.order.details}</p>
-            <p>Price: {orderData.order.fullPrice}</p>
-            <p>Pickup Date: {orderData.order.pickUpDate}</p>
-            <p>Comment: {orderData.order.comment}</p>
-            
-            <h3 className='mt-3'>Items:</h3>
-            <ul>
-              {orderData.order.items.map(item => (
-                <li key={item.description}>
-                  <p>Description: {item.description}</p>
-                  <p>Price: {item.price}</p>
-                  <p>Quantity: {item.quantity}</p>
-                  {/* Add more details as needed */}
-                </li>
-              ))}
-            </ul>
+          <div className='bg-gray-100 p-4 rounded-md' key={index}>
+
+            <div className='flex justify-between items-center border-b border-gray-100 pb-3'>
+                <div className='flex items-center gap-x-2'>
+                    Afhentning 
+                    <MdDeliveryDining className='text-2xl' />
+                </div>
+                <p className='border-l border-gray-400 pl-2 ml-2'> {orderData.order.id} </p>
+                <div className='flex items-center gap-x-2 border-l border-gray-400 px-3 mx-3'>
+                    <p>{orderData.order.name}.</p> 
+                    <FaPhone />
+                </div>
+                <p className='bg-red-400 text-white rounded-md p-1'>{orderData.order.preOrder ? 'Pre order' : 'ASAP'}</p>
+            </div>
+
+            <div className='my-3'>
+              <Textarea
+                label="Kommentar"
+                labelPlacement="outside"
+                className='w-full rounded-md text-sm'
+                isReadOnly
+                placeholder={orderData.order.comment}
+              />
+            </div>
+
+            {orderData.order.items.map(item => (
+              <div className='flex gap-x-2 bg-white my-3 p-2 rounded-md'>
+                <p className='rounded-full p-1 px-[11px] bg-green-600 text-white w-fit h-fit mr-5 text-sm'>{item.quantity}</p>
+                <div>
+                  <p className='font-bold border-b mb-2 pb-1'>{item.description}</p>
+                  <p className='text-sm'> <span className='font-bold'>Burger:</span>{item.description}</p>
+                </div>
+              </div>
+            ))}
+
+            <div>
+              Pris: {orderData.order.fullPrice} kr.
+            </div>
+
+            <div className='mt-3 flex justify-between items-center gap-x-4'>
+                <button
+                className='bg-green-600 text-white py-2 rounded-md font-bold w-full'
+                >
+                    Vælg tid for afhentning
+                </button>
+                <button className='bg-gray-300 p-2 rounded-md font-bold'>...</button>
+            </div>
+
           </div>
-        </>
         ))}
     </div>
+
+
   );
 };
 

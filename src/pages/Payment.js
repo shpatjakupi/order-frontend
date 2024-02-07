@@ -60,8 +60,8 @@ const Payment = () => {
         "name": fuldeNavn,
         "details": adresse,
         "fullPrice": totalPrice,
-        "orderedDate": '2024-02-05 22:00:00', // Check the format
-        "pickUpDate": '2024-02-05 22:30:00',  // Check the format
+        "orderedDate": '2024-02-06 22:00:00', // Check the format
+        "pickUpDate": '2024-02-06 22:30:00',  // Check the format
         "preOrder": false,
         "orderDone": false,
         "comment": "Pizza ekstra sprød",
