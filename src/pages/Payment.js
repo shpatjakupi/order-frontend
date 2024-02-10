@@ -17,6 +17,13 @@ const Payment = () => {
   const [mail, setMail] = useState("");
   const [responseMessage, setResponseMessage] = useState('');
 
+  const date = new Date();
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  const currentDate = `${year}-${month}-${day} 22:00:00`;
+
+
   // state that holds the value of menus in basket
   const { basketItems, totalPrice, kommentar } = useUserContext();
 
@@ -30,6 +37,7 @@ const Payment = () => {
 
   useEffect(() => {
     console.log(basketItems);
+    console.log(currentDate);
   },[basketItems]);
 
   const isValidEmail = (email) => {
@@ -60,8 +68,8 @@ const Payment = () => {
         "name": fuldeNavn,
         "details": adresse,
         "fullPrice": totalPrice,
-        "orderedDate": '2024-02-06 22:00:00', // Check the format
-        "pickUpDate": '2024-02-06 22:30:00',  // Check the format
+        "orderedDate": currentDate,
+        "pickUpDate": '2024-02-10 22:30:00',  // Check the format
         "preOrder": false,
         "orderDone": false,
         "comment": "Pizza ekstra sprød",
