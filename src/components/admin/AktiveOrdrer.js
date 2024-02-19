@@ -4,12 +4,15 @@ import {Textarea} from "@nextui-org/react";
 import { MdDeliveryDining } from "react-icons/md";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
 import {Slider} from "@nextui-org/react";
+import { useUserContext } from 'context/usectx';
 
 const AktiveOrdrer = () => {
 
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [sliderValue, setSliderValue] = useState(15);
   const [orders, setOrders] = useState([]);
+  const { basketItems} = useUserContext();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +41,7 @@ const AktiveOrdrer = () => {
     fetchData();
     console.log(orders);
 
-  }, []); 
+  }, [orders]); 
 
   const setTimerForPickUp = async (order) => {
     console.log(order.id);

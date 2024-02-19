@@ -9,6 +9,7 @@ import { FaHome } from "react-icons/fa";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 import {Autocomplete, AutocompleteItem} from "@nextui-org/react";
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Payment = () => {
 
@@ -22,10 +23,11 @@ const Payment = () => {
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
   const currentDate = `${year}-${month}-${day} 22:00:00`;
+  const navigate = useNavigate();
 
 
   // state that holds the value of menus in basket
-  const { basketItems, totalPrice, kommentar } = useUserContext();
+  const { basketItems, totalPrice, kommentar, currentOrder, setCurrentOrder } = useUserContext();
 
   const leveringtidspunkter = [
     'Hurtigst muligt',
@@ -89,7 +91,7 @@ const Payment = () => {
     };
 
     try {
-      const response = await fetch('http://order.eu-north-1.elasticbeanstalk.com/customer/sendOrder', requestOptions);            
+      const response = await fetch('http://order.eu-north-1.elasticbeanstalk.com/customer/sendOrder', requestOptions);   
 
       // Check if the response is successful (status code 200-299)
       if (!response.ok) {
@@ -97,13 +99,17 @@ const Payment = () => {
       }
 
       // Parse the response data as JSON
-      const responseData = response;
+      const responseData = await response.json();
 
       // Set the fetched data in the state
       console.log("response data " + responseData);
 
-          // Set success message
-    setResponseMessage('Order placed successfully!');
+      setCurrentOrder(data);
+      // Set success message
+      setResponseMessage('Order placed successfully!');
+      navigate('../Check'); // Redirect to accept page
+
+
 
     } catch (error) {
       console.log(error);

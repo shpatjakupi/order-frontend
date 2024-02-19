@@ -9,6 +9,7 @@ import TidligereOrdrer from "components/admin/TidligereOrdrer";
 import AktiveOrdrer from "components/admin/AktiveOrdrer";
 import Idag from "components/admin/TidligereOrdrer/Idag";
 import Payment from "pages/Payment";
+import Check from "components/payment/Check";
 
 export default function App() {
 
@@ -26,6 +27,7 @@ export default function App() {
             <Route path="tidligere-ordrer" element={<TidligereOrdrer />} />
             <Route path="idag" element={<Idag />} />
           </Route>
+          <Route path="/Check" element={<Check />} />
         </Routes>
       </Router>
       </UserProvider>

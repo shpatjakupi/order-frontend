@@ -15,6 +15,9 @@ export const UserProvider = ({ children }) => {
   const [tilvalg, setTilvalg] = useState('');
   // state that holds the comment value from user if user has a comment for his order
   const [kommentar, setKommentar] = useState("");
+  // current order that handles the payment step gets the specific order
+  const [currentOrder, setCurrentOrder] = useState();
+
 
   const handleButtonClick = () => {
     // Increase basketItems by 1
@@ -102,7 +105,9 @@ export const UserProvider = ({ children }) => {
         tilvalg,
         totalPrice,
         kommentar,
-        setKommentar
+        setKommentar,
+        currentOrder,
+        setCurrentOrder
     }}>
       {children}
     </UserContext.Provider>
