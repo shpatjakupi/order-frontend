@@ -18,6 +18,8 @@ const Payment = () => {
   const [mail, setMail] = useState("");
   const [responseMessage, setResponseMessage] = useState('');
 
+  // const [orderId, setOrderId] = useState();
+
   const date = new Date();
   const day = date.getDate();
   const month = date.getMonth() + 1;
@@ -27,7 +29,7 @@ const Payment = () => {
 
 
   // state that holds the value of menus in basket
-  const { basketItems, totalPrice, kommentar, currentOrder, setCurrentOrder } = useUserContext();
+  const { basketItems, totalPrice, kommentar, setCurrentOrder, orderId, setOrderId } = useUserContext();
 
   const leveringtidspunkter = [
     'Hurtigst muligt',
@@ -39,7 +41,6 @@ const Payment = () => {
 
   useEffect(() => {
     console.log(basketItems);
-    console.log(currentDate);
   },[basketItems]);
 
   const isValidEmail = (email) => {
@@ -71,7 +72,7 @@ const Payment = () => {
         "details": adresse,
         "fullPrice": totalPrice,
         "orderedDate": currentDate,
-        "pickUpDate": '2024-02-10 22:30:00',  // Check the format
+        "pickUpDate": '2024-02-27 22:30:00',  // Check the format
         "preOrder": false,
         "orderDone": false,
         "comment": "Pizza ekstra sprød",
@@ -102,7 +103,9 @@ const Payment = () => {
       const responseData = await response.json();
 
       // Set the fetched data in the state
-      console.log("response data " + responseData);
+      console.log(responseData);
+      setOrderId(responseData.orderId);
+      console.log(orderId);
 
       setCurrentOrder(data);
       // Set success message
@@ -120,6 +123,11 @@ const Payment = () => {
     }
 
   };
+
+  useEffect(() => {
+    // This effect will run whenever orderId changes
+    console.log(orderId);
+  }, [orderId]); // Specify orderId as a dependency
   
 
   return (
@@ -262,7 +270,7 @@ const Payment = () => {
           <Button
           onClick={MakeAnOrder}
           disabled={!fuldeNavn || !adresse || !mail || !isValidEmail(mail)}
-          className={`w-full bg-green-600  text-white font-bold rounded-lg h-12 text-lg ${isBtnDisabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
+          className={`w-full z-50 bg-green-600  text-white font-bold rounded-lg h-12 text-lg ${isBtnDisabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
             Bestil
           </Button>
         </div>

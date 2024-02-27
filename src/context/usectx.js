@@ -18,6 +18,8 @@ export const UserProvider = ({ children }) => {
   // current order that handles the payment step gets the specific order
   const [currentOrder, setCurrentOrder] = useState();
 
+    const [orderId, setOrderId] = useState();
+
 
   const handleButtonClick = () => {
     // Increase basketItems by 1
@@ -107,7 +109,9 @@ export const UserProvider = ({ children }) => {
         kommentar,
         setKommentar,
         currentOrder,
-        setCurrentOrder
+        setCurrentOrder,
+        orderId,
+        setOrderId
     }}>
       {children}
     </UserContext.Provider>
