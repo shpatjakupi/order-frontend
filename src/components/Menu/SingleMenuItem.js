@@ -56,7 +56,6 @@ const SingleMenuItem = (props) => {
             };
     
             fetchData();
-    
         }, []);
 
 
