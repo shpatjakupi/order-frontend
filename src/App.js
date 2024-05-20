@@ -17,7 +17,6 @@ export default function App() {
     <div>
       <UserProvider>
       <Router>
-        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Order" element={<Order />} />

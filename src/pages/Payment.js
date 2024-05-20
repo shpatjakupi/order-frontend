@@ -158,7 +158,6 @@ const Payment = () => {
           size='md'
           type="text"
           label="Fulde navn"
-          placeholder="Hans Jensen"
           labelPlacement="inside"
           className='mb-4'
           endContent={
@@ -171,7 +170,6 @@ const Payment = () => {
           size='md'
           type="text"
           label="Addresse"
-          placeholder="Roskildevej 542, 2000 frederiksberg"
           labelPlacement="inside"
           className='mb-4'
           endContent={
@@ -184,7 +182,6 @@ const Payment = () => {
           size='md'
           type="email"
           label="Email"
-          placeholder="you@example.com"
           labelPlacement="inside"
           endContent={
             <IoMdMail className="text-2xl text-default-300 pointer-events-none flex-shrink-0" />

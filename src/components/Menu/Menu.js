@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import {Input} from "@nextui-org/react";
 import { FaSearch } from "react-icons/fa";
 import SingleMenuItem from './SingleMenuItem';
+import ScrollSpy from "react-ui-scrollspy";
+import {Input} from "@nextui-org/react";
 
 const Menu = () => {
 
@@ -16,6 +17,15 @@ const Menu = () => {
 
     // func that gets the foodkeys only 
     const uniqueCategories = data ? [...new Set(data.map(item => item.foodKey.replace(/_/g, ' ')))] : [];
+
+    const processCategories = (categories) => {
+      return categories.map(category => category.toLowerCase().replace(/\s+/g, ''));
+    };
+
+    const processedCategories = processCategories(uniqueCategories);
+
+    console.log(processedCategories);
+
 
     // triggers fetch as soon as the component gets called
     useEffect(() => {
@@ -72,10 +82,23 @@ const Menu = () => {
 
   return (
     <>
+        <ScrollSpy scrollThrottle={100} useBoxMethod={false}>
+          <div className='lg:w-[49%]'>
+            <Input
+            className='rounded-none w-100'
+              type="email"
+              placeholder="Søg i Ordrups Pizza"
+              labelPlacement="outside"
+              endContent={
+                <FaSearch className="text-xl text-default-400 pointer-events-none flex-shrink-0" />
+              }
+              />
+          </div>
+        
         <div className='mt-7'>
-          {uniqueCategories.map(category => (
+          {uniqueCategories.map((category, index) => (
             <div key={category}>
-              <h2 className='text-4xl font-bold my-5'>{category}</h2>
+              <h2 id={processedCategories[index]} className='text-4xl font-bold my-5'>{category}</h2>
               <div className='lg:flex lg:flex-wrap lg:justify-between'>
               {data && data
                 .filter(item => item.foodKey.replace(/_/g, ' ') === category) // Adjust the filter here
@@ -86,6 +109,7 @@ const Menu = () => {
             </div>
           ))}
         </div>
+        </ScrollSpy>
     </>
   )
 }

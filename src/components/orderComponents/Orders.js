@@ -12,9 +12,6 @@ const Orders = () => {
 
   return (
     <div className='mt-10 px-4'>
-        <p>
-            Bestil din mad her i løbet af få kliks.
-        </p>
         <Menu />
         <Basket />
     </div>

@@ -30,48 +30,59 @@ export const UserProvider = ({ children }) => {
     // Calculate item price
     const itemPrice = parseFloat(item.price);
   
-    // Check if selectedToppings is defined and is an array
-    if (selectedToppings && Array.isArray(selectedToppings)) {
-      // Generate a unique identifier for this menu item
-      const uniqueIdentifier = `${item.id}-${selectedToppings.join('-')}`;
+    // Generate a unique identifier for this menu item, including toppings if any
+    const uniqueIdentifier = selectedToppings && Array.isArray(selectedToppings) && selectedToppings.length > 0
+      ? `${item.id}-${selectedToppings.join('-')}`
+      : item.id;
   
-      // Calculate toppings price using reduce
-      const toppingsPrice = selectedToppings.reduce((total, toppingName) => {
-        // Find the topping in tilvalg array by name
-        const selectedTopping = tilvalg.find((t) => t.name === toppingName);
-        // If found, add the price, otherwise, add 0
-        return total + (selectedTopping ? parseFloat(selectedTopping.price) : 0);
-      }, 0);
+    // Calculate toppings price using reduce if toppings are selected
+    const toppingsPrice = selectedToppings && Array.isArray(selectedToppings) 
+      ? selectedToppings.reduce((total, toppingName) => {
+          // Find the topping in tilvalg array by name
+          const selectedTopping = tilvalg.find((t) => t.name === toppingName);
+          // If found, add the price, otherwise, add 0
+          return total + (selectedTopping ? parseFloat(selectedTopping.price) : 0);
+        }, 0)
+      : 0;
   
-      // Calculate total price
-      const totalPrice = quantity * (itemPrice + toppingsPrice);
-      console.log(`Total Price for ${uniqueIdentifier}:`, totalPrice);
+    // Calculate total price
+    const totalPrice = quantity * (itemPrice + toppingsPrice);
   
-      // Update the basketItems state with the new item
-      setBasketItems((prevBasketItems) => [
-        ...prevBasketItems,
-        { ...item, quantity, selectedToppings, totalPrice, uniqueIdentifier },
-      ]);
-      console.log(basketItems);
-    } else {
-      // If no toppings are selected, calculate total price without toppings
-      const totalPrice = quantity * itemPrice;
-      console.log(`Total Price for ${item.id}:`, totalPrice);
+    setBasketItems((prevBasketItems) => {
+      // Find if the item already exists in the basket
+      const existingItemIndex = prevBasketItems.findIndex(basketItem => basketItem.uniqueIdentifier === uniqueIdentifier);
   
-      // Update the basketItems state with the new item
-      setBasketItems((prevBasketItems) => [
-        ...prevBasketItems,
-        { ...item, quantity, selectedToppings, totalPrice },
-      ]);
-    }
+      if (existingItemIndex !== -1) {
+        // Item exists, update its quantity and total price
+        const updatedBasketItems = [...prevBasketItems];
+        const existingItem = updatedBasketItems[existingItemIndex];
+  
+        // Update quantity and total price
+        const newQuantity = existingItem.quantity + quantity;
+        const newTotalPrice = existingItem.totalPrice + totalPrice;
+  
+        updatedBasketItems[existingItemIndex] = {
+          ...existingItem,
+          quantity: newQuantity,
+          totalPrice: newTotalPrice
+        };
+  
+        return updatedBasketItems;
+      } else {
+        // Item does not exist, add new item to basket
+        return [
+          ...prevBasketItems,
+          { ...item, quantity, selectedToppings, totalPrice, uniqueIdentifier }
+        ];
+      }
+    });
   
     // Clear selected toppings for the next item
     setSelectedToppings([]);
-
+    
     console.log(basketItems);
-  
-    // Rest of the function...
   };
+  
   
   
   const increaseQuantity = () => {

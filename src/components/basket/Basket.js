@@ -47,7 +47,7 @@ const Basket = () => {
                 {`Pris: ${totalPrice} kr.`}
             </div>
         </Button>
-        <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <Modal className=' z-50' isOpen={isOpen} onOpenChange={onOpenChange}>
             <ModalContent>
             {(onClose) => (
                 <>

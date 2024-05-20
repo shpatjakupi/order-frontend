@@ -14,10 +14,10 @@ const Herobanner = (props) => {
     <>
 
         <div 
-        className='h-[300px] md:h-[320px] relative img wrappper'
+        className='h-[300px] md:h-[320px] relative img wrappper lg:mx-4 lg:mt-7 lg:rounded-xl'
         >
-          <img className='h-full w-full object-cover z-50 img' src={url} />
-          <div className='absolute bg-[#0000009e] h-full w-full top-0'>
+          <img className='h-full w-full object-cover z-50 img lg:rounded-xl' src={url} />
+          <div className='absolute bg-[#0000009e] h-full w-full top-0 lg:rounded-xl'>
           </div>
 
           <div className='absolute left-0 right-0 top-0 bottom-0 flex items-center justify-center text-white'>
@@ -25,7 +25,7 @@ const Herobanner = (props) => {
               <h1 className='text-4xl lg:text-5xl font-semibold'>Ordrups Pizza</h1>
 
               <div className='mt-6 backdrop-blur-sm bg-white/30 p-3 rounded-lg'>
-                <p className='font-semibold mb-1'>Åbeningstider</p>
+                <p className='font-semibold mb-1'>Åbningstider</p>
                 <p className='text-sm md:text-md font-light text-white'>Mandag - Fredag: <span className='text-[#fdfdfdda]'>13.00 - 22.00</span></p>
                 <p className='text-sm md:text-md font-light text-white'>Lørdag - Søndag: <span className='text-[#fdfdfdda]'>11.00 - 22.00</span></p>
 
