@@ -1,5 +1,4 @@
 import React from 'react'
-import img from '../../pizza.png'
 import { FaCircleInfo } from "react-icons/fa6";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Tooltip} from "@nextui-org/react";
 
@@ -14,7 +13,7 @@ const Herobanner = (props) => {
     <>
 
         <div 
-        className='h-[300px] md:h-[320px] relative img wrappper lg:mx-4 lg:mt-7 lg:rounded-xl'
+        className='h-[300px] md:h-[320px] relative img wrappper lg:mx-4 lg:rounded-xl'
         >
           <img className='h-full w-full object-cover z-50 img lg:rounded-xl' src={url} />
           <div className='absolute bg-[#0000009e] h-full w-full top-0 lg:rounded-xl'>
@@ -38,7 +37,7 @@ const Herobanner = (props) => {
                           <h2 className='text-xl font-bold'>Ordrups Pizza</h2>
                           <div className='flex items-center'>
                               <div className='bg-red-500 dark:bg-[#65e295] w-[12px] h-[12px] rounded-full mr-1 shrinkAndGrow animate-pulse text-sm'></div>
-                              <p className='text-sm text-[#717173] font-light'>Søndag 11.00–21.00</p>
+                              <p className='text-sm text-[#717173] font-light'>Tirsdag 11.00–22.00</p>
                           </div>
                       </ModalHeader>
                       <hr />
@@ -103,15 +102,6 @@ const Herobanner = (props) => {
               </div>
             </div>
 
-          </div>
-
-
-          <div className="absolute bottom-[-34px] w-full flex items-center justify-center">
-            <img
-              className="w-20 bg-white rounded-3xl"
-              src={img}
-              alt="Centered Image"
-            />
           </div>
 
         </div>

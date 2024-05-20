@@ -11,8 +11,6 @@ const Home = () => {
 
   return (
     <div>
-
-      <Herobanner />
       <About />
       <a className='cursor-pointer	' href={`tel:${phoneNumber}`}>
         <FaSquarePhone className='fixed cursor-pointer text-4xl lg:bottom-12 bottom-20 right-3 text-green-600 rounded-md' />
@@ -24,8 +22,6 @@ const Home = () => {
       </div>
 
       <Footer domain="Ordrupspizza" position="absolute" />
-
-
     </div>
 
     

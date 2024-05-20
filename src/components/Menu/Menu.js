@@ -83,7 +83,7 @@ const Menu = () => {
   return (
     <>
         <ScrollSpy scrollThrottle={100} useBoxMethod={false}>
-          <div className='lg:w-[49%]'>
+          <div className='lg:w-100'>
             <Input
             className='rounded-none w-100'
               type="email"

@@ -106,7 +106,7 @@ const Basket = () => {
                 </ModalBody>
                 <ModalFooter>
                 <Button 
-                className='bg-green-600 text-left w-full p-4 text-white basketbtn rounded-md' onPress={onOpen}
+                className={`bg-green-600 text-left w-full p-4 text-white basketbtn rounded-md`} onPress={onOpen}
                 >
                     <Link className='flex justify-between w-full' to="/payment">
                     <div className='flex items-center'>

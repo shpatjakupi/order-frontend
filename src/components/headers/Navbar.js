@@ -13,52 +13,47 @@ const Nav = () => {
   };
 
   return (
-    <div className="w-100 mt-16 mx-4"
-    style={{ position: 'sticky', top: '0'}}
+    <div className="w-100 bg-white sticky mt-10 top-10 shadow-sm lg:top-16 lg:mt-7 lg:shadow-none"
     >
       <div
-      className="bg-gray-100 px-4 rounded-md py-3 overflow-x-auto"
-        style={{
-          display: "flex",
-          gap: "20px",
-        }}
+      className="bg-white gap-2 lg:gap-1 flex lg:inline-grid lg:w-full px-2 rounded-md py-3 overflow-x-auto"
       >
-        <a onClick={(e) => onPress(e)} href="#panini">
+        <a className="hover:bg-gray-100 px-2 py-[4px] rounded-md" onClick={(e) => onPress(e)} href="#panini">
           <div data-to-scrollspy-id="panini" className={"ss-item w-max"}>
             Panini
           </div>
         </a>
-        <a onClick={(e) => onPress(e)} href="#gourmetpizza">
+        <a className="hover:bg-gray-100 px-2 py-[4px] rounded-md" onClick={(e) => onPress(e)} href="#gourmetpizza">
           <div data-to-scrollspy-id="gourmetpizza" className={"ss-item w-max"}>
           Gourmet Pizza
           </div>
         </a>
-        <a onClick={(e) => onPress(e)} href="#burger">
+        <a className="hover:bg-gray-100 px-2 py-[4px] rounded-md" onClick={(e) => onPress(e)} href="#burger">
           <div data-to-scrollspy-id="burger" className={"ss-item w-max"}>
             Burger
           </div>
         </a>
-        <a onClick={(e) => onPress(e)} href="#pizza">
+        <a className="hover:bg-gray-100 px-2 py-[4px] rounded-md" onClick={(e) => onPress(e)} href="#pizza">
           <div data-to-scrollspy-id="pizza" className={"ss-item w-max"}>
             Pizza
           </div>
         </a>
-        <a onClick={(e) => onPress(e)} href="#pizza">
+        <a className="hover:bg-gray-100 px-2 py-[4px] rounded-md"onClick={(e) => onPress(e)} href="#pizza">
           <div data-to-scrollspy-id="pizza" className={"ss-item w-max"}>
             Test 1
           </div>
         </a>
-        <a onClick={(e) => onPress(e)} href="#pizza">
+        <a className="hover:bg-gray-100 px-2 py-[4px] rounded-md" onClick={(e) => onPress(e)} href="#pizza">
           <div data-to-scrollspy-id="pizza" className={"ss-item w-max"}>
           Test 2
           </div>
         </a>
-        <a onClick={(e) => onPress(e)} href="#pizza">
+        <a className="hover:bg-gray-100 px-2 py-[4px] rounded-md" onClick={(e) => onPress(e)} href="#pizza">
           <div data-to-scrollspy-id="pizza" className={"ss-item w-max"}>
           Test 3
           </div>
         </a>
-        <a onClick={(e) => onPress(e)} href="#pizza">
+        <a className="hover:bg-gray-100 px-2 py-[4px] rounded-md" onClick={(e) => onPress(e)} href="#pizza">
           <div data-to-scrollspy-id="pizza" className={"ss-item w-max"}>
           Test 4
           </div>

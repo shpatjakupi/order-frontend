@@ -17,8 +17,7 @@ const Payment = () => {
   const [adresse, setAdresse] = useState("");
   const [mail, setMail] = useState("");
   const [responseMessage, setResponseMessage] = useState('');
-
-  // const [orderId, setOrderId] = useState();
+  const [isBtnDisabled, setIsBtnDisabled] = useState(true);
 
   const date = new Date();
   const day = date.getDate();
@@ -26,7 +25,6 @@ const Payment = () => {
   const year = date.getFullYear();
   const currentDate = `${year}-${month}-${day} 22:00:00`;
   const navigate = useNavigate();
-
 
   // state that holds the value of menus in basket
   const { basketItems, totalPrice, kommentar, setCurrentOrder, orderId, setOrderId } = useUserContext();
@@ -43,14 +41,21 @@ const Payment = () => {
     console.log(basketItems);
   },[basketItems]);
 
+  // Helper function to validate email
   const isValidEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    // Simple regex for email validation
+    return /\S+@\S+\.\S+/.test(email);
   };
 
-  const isBtnDisabled = () => {
-    return !fuldeNavn || !adresse || !mail || !isValidEmail(mail);
-  };
+   // Effect to update button disabled status
+   useEffect(() => {
+    const checkDisabled = () => {
+      return !fuldeNavn || !adresse || !mail || !isValidEmail(mail);
+    };
+
+    setIsBtnDisabled(checkDisabled());
+  }, [fuldeNavn, adresse, mail]); // Dependencies: update when these change
+
 
   const MakeAnOrder = async (e) => {
 
@@ -63,7 +68,7 @@ const Payment = () => {
       "quantity": basketItem.quantity,
       "selectedToppings": basketItem.selectedToppings.join(', '),
       "totalPrice": basketItem.totalPrice
-      // ... andre relevante egenskaber fra basketItem
+      // ... andet relevant fra basketItem
     }));
   
     const data = {
@@ -72,7 +77,7 @@ const Payment = () => {
         "details": adresse,
         "fullPrice": totalPrice,
         "orderedDate": currentDate,
-        "pickUpDate": '2024-02-27 22:30:00',  // Check the format
+        "pickUpDate": '2024-05-21 14:30:00',  // Check the format
         "preOrder": false,
         "orderDone": false,
         "comment": "Pizza ekstra sprød",
@@ -125,9 +130,8 @@ const Payment = () => {
   };
 
   useEffect(() => {
-    // This effect will run whenever orderId changes
     console.log(orderId);
-  }, [orderId]); // Specify orderId as a dependency
+  }, [orderId]);
   
 
   return (
@@ -266,8 +270,9 @@ const Payment = () => {
         <div className="fixed bottom-2 left-0 right-0 flex justify-center mx-4 md:right-0 md:w-1/2">
           <Button
           onClick={MakeAnOrder}
-          disabled={!fuldeNavn || !adresse || !mail || !isValidEmail(mail)}
-          className={`w-full z-50 bg-green-600  text-white font-bold rounded-lg h-12 text-lg ${isBtnDisabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
+          disabled={!fuldeNavn || !adresse || !mail}
+          className={`w-full z-50 bg-green-600  text-white font-bold rounded-lg h-12 text-lg 
+          ${isBtnDisabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
             Bestil
           </Button>
         </div>

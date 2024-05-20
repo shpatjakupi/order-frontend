@@ -1,6 +1,5 @@
 import React from "react";
 import Home from "pages/Home";
-import Navbar from "components/headers/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Order from "pages/Order";
 import { UserProvider } from '../src/context/usectx';
@@ -10,6 +9,8 @@ import AktiveOrdrer from "components/admin/AktiveOrdrer";
 import Idag from "components/admin/TidligereOrdrer/Idag";
 import Payment from "pages/Payment";
 import Check from "components/payment/Check";
+import LogoArea from "components/headers/LogoArea";
+import Herobanner from "components/hero/Herobanner";
 
 export default function App() {
 
@@ -17,6 +18,8 @@ export default function App() {
     <div>
       <UserProvider>
       <Router>
+        <LogoArea />
+        <Herobanner />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Order" element={<Order />} />

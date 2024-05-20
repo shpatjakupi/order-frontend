@@ -8,35 +8,23 @@ import Nav from 'components/headers/Navbar';
 
 const Order = () => {
   return (
-    <>
+    <div>
 
-    <Herobanner />
+      <div 
+      className='lg:flex'
+      >
+        <div className='lg:w-[25%]'>
+        <Nav />
+        </div>
 
-    <Nav />
-
-
-
-
-    <Orders />
-
-    {/* <ScrollSpy scrollThrottle={100} useBoxMethod={false}>
-        <p id="paniniii" backgroundColor={"orange"}>
-          <h1>panini</h1>
-        </p>
-        <p id="gourmetPizzaaa" backgroundColor={"brown"}>
-          <h1>gourmetPizza</h1>
-        </p>
-        <p id="burgerrr" backgroundColor={"blue"}>
-          <h1>burger</h1>
-        </p>
-        <p id="pizzaaa" backgroundColor={"green"}>
-          <h1>pizza</h1>
-        </p>
-      </ScrollSpy> */}
+        <div className='lg:w-[75%]'>
+        <Orders />
+        </div>
+      </div>
 
     <Footer domain="Ordrupspizza" position="static" />
 
-    </>
+    </div>
   )
 }
 
