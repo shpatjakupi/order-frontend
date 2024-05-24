@@ -11,7 +11,7 @@ const Orders = () => {
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   return (
-    <div className='mt-10 px-4'>
+    <div className='mt-10'>
         <Menu />
         <Basket />
     </div>

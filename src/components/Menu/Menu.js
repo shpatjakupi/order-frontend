@@ -85,7 +85,7 @@ const Menu = () => {
         <ScrollSpy scrollThrottle={100} useBoxMethod={false}>
           <div className='lg:w-100'>
             <Input
-            className='rounded-none w-100'
+            className='rounded-none w-100 border-none focus:border-transparent focus:ring-0'
               type="email"
               placeholder="Søg i Ordrups Pizza"
               labelPlacement="outside"

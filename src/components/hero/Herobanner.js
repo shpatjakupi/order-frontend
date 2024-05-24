@@ -13,7 +13,7 @@ const Herobanner = (props) => {
     <>
 
         <div 
-        className='h-[300px] md:h-[320px] relative img wrappper lg:mx-4 lg:rounded-xl'
+        className='h-[300px] md:h-[320px] relative img wrappper lg:mx-14 lg:rounded-xl'
         >
           <img className='h-full w-full object-cover z-50 img lg:rounded-xl' src={url} />
           <div className='absolute bg-[#0000009e] h-full w-full top-0 lg:rounded-xl'>

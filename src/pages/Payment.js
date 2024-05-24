@@ -77,10 +77,10 @@ const Payment = () => {
         "details": adresse,
         "fullPrice": totalPrice,
         "orderedDate": currentDate,
-        "pickUpDate": '2024-05-21 14:30:00',  // Check the format
+        "pickUpDate": '2024-05-20 23:30:00',  // Check the format
         "preOrder": false,
         "orderDone": false,
-        "comment": "Pizza ekstra sprød",
+        "comment": "kommentar",
       },
       "items": itemsData
     };
@@ -211,7 +211,7 @@ const Payment = () => {
         </div>
 
         <div className='bg-[#f5f5f5] p-3 rounded-lg'>
-        <h2 className='text-2xl font-bold'>Din ordrer fra</h2>
+        <h2 className='text-2xl font-bold'>Her kan du se din ordrer fra</h2>
         <p className=' font-light text-sm'>Ordrups Pizza</p>
         {basketItems.map((item) => (
           <div className='border-b border-gray-300' key={item.id}>

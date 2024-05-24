@@ -10,7 +10,6 @@ import Idag from "components/admin/TidligereOrdrer/Idag";
 import Payment from "pages/Payment";
 import Check from "components/payment/Check";
 import LogoArea from "components/headers/LogoArea";
-import Herobanner from "components/hero/Herobanner";
 
 export default function App() {
 
@@ -19,7 +18,6 @@ export default function App() {
       <UserProvider>
       <Router>
         <LogoArea />
-        <Herobanner />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Order" element={<Order />} />

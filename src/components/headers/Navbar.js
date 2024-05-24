@@ -13,10 +13,10 @@ const Nav = () => {
   };
 
   return (
-    <div className="w-100 bg-white sticky mt-10 top-10 shadow-sm lg:top-16 lg:mt-7 lg:shadow-none"
+    <div className="bg-white sticky mt-10 top-10 shadow-sm lg:top-16 lg:mt-7 lg:shadow-none border-r"
     >
       <div
-      className="bg-white gap-2 lg:gap-1 flex lg:inline-grid lg:w-full px-2 rounded-md py-3 overflow-x-auto"
+      className="bg-white gap-2 lg:gap-1 flex lg:inline-grid lg:w-full rounded-md py-3 overflow-x-auto pr-2"
       >
         <a className="hover:bg-gray-100 px-2 py-[4px] rounded-md" onClick={(e) => onPress(e)} href="#panini">
           <div data-to-scrollspy-id="panini" className={"ss-item w-max"}>
