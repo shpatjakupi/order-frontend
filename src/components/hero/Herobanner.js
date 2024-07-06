@@ -2,7 +2,7 @@ import React from 'react'
 import { FaCircleInfo } from "react-icons/fa6";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
 
-const url = 'https://images.unsplash.com/photo-1579751626657-72bc17010498?q=80&w=2669&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+const url = 'https://images.cdn.europe-west1.gcp.commercetools.com/4236c056-1731-40fb-91cb-a04f5c51e653/Vesuvio6_foodis-lXBathcM.jpg';
 
 const Herobanner = (props) => {
 
@@ -16,14 +16,14 @@ const Herobanner = (props) => {
         className='h-[300px] md:h-[320px] relative img wrappper lg:mx-14 lg:rounded-xl'
         >
           <img className='h-full w-full object-cover z-50 img lg:rounded-xl' src={url} />
-          <div className='absolute bg-[#0000009e] h-full w-full top-0 lg:rounded-xl'>
+          <div className='absolute bg-[#00000020] h-full w-full top-0 lg:rounded-xl'>
           </div>
 
           <div className='absolute left-0 right-0 top-0 bottom-0 flex items-center justify-center text-white'>
             <div className='text-center'>
-              <h1 className='text-4xl lg:text-5xl font-semibold'>Ordrups Pizza</h1>
 
               <div className='mt-6 backdrop-blur-sm bg-white/30 p-3 rounded-lg'>
+              <h1 className='text-4xl lg:text-5xl font-semibold mb-5'>Ordrups Pizza</h1>
                 <p className='font-semibold mb-1'>Åbningstider</p>
                 <p className='text-sm md:text-md font-light text-white'>Mandag - Fredag: <span className='text-[#fdfdfdda]'>13.00 - 22.00</span></p>
                 <p className='text-sm md:text-md font-light text-white'>Lørdag - Søndag: <span className='text-[#fdfdfdda]'>11.00 - 22.00</span></p>

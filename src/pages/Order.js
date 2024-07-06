@@ -11,7 +11,7 @@ const Order = () => {
       <div 
       className='lg:flex lg:mx-14 lg:gap-10'
       >
-        <div className='lg:w-[25%] sticky top-14 z-50'>
+        <div className='lg:w-[25%] sticky top-14 z-10'>
         <Nav />
         </div>
 
