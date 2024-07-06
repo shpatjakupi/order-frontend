@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Input} from "@nextui-org/react";
 import { useUserContext } from '../../context/usectx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {Textarea} from "@nextui-org/react";
 
 const Basket = () => {
@@ -11,6 +11,9 @@ const Basket = () => {
 
     // state that holds the value of menus in basket
     const { basketItems, totalPrice, kommentar, setKommentar } = useUserContext();
+
+      // useNavigate hook to programmatically navigate
+    const navigate = useNavigate();
 
     // // state that holds the comment value from user if user has a comment for his order
     // const [kommentar, setKommentar] = React.useState("");
@@ -32,6 +35,14 @@ const Basket = () => {
         // console.log("hej");
     }
 
+    const handlePaymentClick = (e) => {
+        if (totalPrice === 0) {
+          e.preventDefault(); // Prevent the default link behavior if totalPrice is 0
+        } else {
+          navigate('/payment'); // Navigate to payment if totalPrice is greater than 0
+        }
+      };
+
 
 
     
@@ -50,7 +61,7 @@ const Basket = () => {
                 {`Pris: ${totalPrice} kr.`}
             </div>
         </Button>
-        <Modal className=' z-50' isOpen={isOpen} onOpenChange={onOpenChange}>
+        <Modal className=' mb-20' isOpen={isOpen} onOpenChange={onOpenChange}>
             <ModalContent>
             {(onClose) => (
                 <>
@@ -109,9 +120,9 @@ const Basket = () => {
                 </ModalBody>
                 <ModalFooter>
                 <Button 
-                className={`bg-green-600 text-left w-full p-4 text-white basketbtn rounded-md`} onPress={totalPrice < 0 ? onOpen : null}
+                onClick={handlePaymentClick}
+                className={`bg-green-600 flex justify-between w-full text-left p-4 text-white basketbtn rounded-md`}
                 >
-                    <Link className='flex justify-between w-full' to="/payment">
                     <div className='flex items-center'>
                         <span className='mr-3 bg-white text-green-600 text-sm rounded-full px-[7px]'>{totalQuantityInBasket}</span>
                         <p>Gå til kasse</p>
@@ -120,7 +131,6 @@ const Basket = () => {
                     <div>
                     {`Pris: ${totalPrice} kr.`}
                     </div>
-                    </Link>
                 </Button>
                 </ModalFooter>
                 </>
