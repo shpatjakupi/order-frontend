@@ -37,7 +37,7 @@ const Basket = () => {
     
   return (
     <div className='fixed bottom-2 left-6 lg:left-14 right-6 lg:w-1/3'>
-        <Button className='bg-green-600	 w-full text-left flex justify-between items-center p-4 text-white basketbtn rounded' onPress={onOpen}>
+        <Button className='bg-green-600 cursor-pointer w-full flex justify-between items-center p-4 text-white basketbtn rounded' onPress={onOpen}>
             <div className='flex items-center'>
                 <span className='mr-3 bg-white text-green-800 text-sm rounded-full px-[7px]'>{totalQuantityInBasket}</span>
                 <p>Vis kurv</p>

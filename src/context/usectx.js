@@ -18,7 +18,16 @@ export const UserProvider = ({ children }) => {
   // current order that handles the payment step gets the specific order
   const [currentOrder, setCurrentOrder] = useState();
 
-    const [orderId, setOrderId] = useState();
+  const [orderId, setOrderId] = useState();
+
+    // State to store the fetched data
+    const [data, setData] = useState(null);
+    // State to track loading status
+    const [loading, setLoading] = useState(true);
+    // State to track errors
+    const [error, setError] = useState(null);
+
+
 
 
   const handleButtonClick = () => {
@@ -98,6 +107,51 @@ export const UserProvider = ({ children }) => {
   return accumulator + currentItem.totalPrice;
   }, 0);
 
+
+  const fetchData = async () => {
+            
+    try {
+
+        // Set loading to true while fetching data
+        setLoading(true);
+
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic ' + btoa('john:test1234'),
+          });
+          
+          const requestOptions = {
+            method: 'GET',
+            headers: headers,
+          };
+          
+          const response = await fetch('http://order.eu-north-1.elasticbeanstalk.com/menu/food', requestOptions);                  
+      
+      // Check if the response is successful (status code 200-299)
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      // Parse the response data as JSON
+      const result = await response.json();
+
+      // Set the fetched data in the state
+      setData(result);
+    } catch (error) {
+      // Set error state if there is an error
+      setError(error);
+    } finally {
+      // Set loading to false when the request is complete
+      setLoading(false);
+    }
+
+  };
+
+    // Helper function to capitalize the first letter of a string and make rest lowercase
+    const capitalizeFirstLetter = (string) => {
+      return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    };
+
   return (
     <UserContext.Provider 
     value={{ 
@@ -122,7 +176,12 @@ export const UserProvider = ({ children }) => {
         currentOrder,
         setCurrentOrder,
         orderId,
-        setOrderId
+        setOrderId,
+        fetchData,
+        data,
+        loading,
+        error,
+        capitalizeFirstLetter
     }}>
       {children}
     </UserContext.Provider>

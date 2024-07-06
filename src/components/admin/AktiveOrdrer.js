@@ -85,7 +85,6 @@ const AktiveOrdrer = () => {
             <div className='flex justify-between items-center border-b border-gray-100 pb-3'>
                 <div className='flex items-center gap-x-2'>
                     Afhentning 
-                    <MdDeliveryDining className='text-2xl' />
                 </div>
                 <p className='border-l border-gray-400 pl-2 ml-2'> {orderData.order.id} </p>
                 <div className='flex items-center gap-x-2 border-l border-gray-400 px-3 mx-3'>
